@@ -39,13 +39,13 @@ public class MProductListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select shoesid, productbrand, productmodel, productsize, productprice, productstock, productstatus from product";
+			String query = "select productid, productbrand, productmodel, productsize, productprice, productstock, productstatus from product";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
-				int productseq = resultSet.getInt("productseq");
-				String productbrand = resultSet.getString("cproductbrand");
+				int productseq = resultSet.getInt("productid");
+				String productbrand = resultSet.getString("productbrand");
 				String productmodel = resultSet.getString("productmodel");
 				String productsize = resultSet.getString("productsize");
 				int productprice = resultSet.getInt("productprice");
