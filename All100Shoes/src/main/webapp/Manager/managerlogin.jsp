@@ -99,7 +99,7 @@ function backtomain(){
 					placeholder="name@example.com"> <label for="floatingInput">ID</label>
 			</div>
 			<div class="form-floating">
-				<input type="password" class="form-control" id="floatingPassword" name="managerpassword"
+				<input type="password" class="form-control" id="floatingPassword" name="managerpw"
 					placeholder="Password"> <label for="floatingPassword">Password</label>
 			</div>
 			<input class="w-100 btn btn-lg btn-dark" type="submit" value="로그인">
