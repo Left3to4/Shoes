@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; UTF-8"
+	pageEncoding="UTF-8"%>
+
 <header
 	class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 	<img src="" style="width: 35%">
