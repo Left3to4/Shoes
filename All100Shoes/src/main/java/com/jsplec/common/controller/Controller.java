@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jsplec.customer.command.SCustomerCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerLoginCommand;
+import com.jsplec.manager.command.SManagerUserListCommand;
 
 
 /**
@@ -57,17 +58,31 @@ public class Controller extends HttpServlet {
 		
 		switch(com) {
 
-		case("/login.do"):
+//		-------------- 유승 --------------------------
+		case("/managerlogin.do"):
+			viewPage = "Manager/managerlogin.jsp";
+			break;
+		
+		case("/Manager/login.do"):
+			
 			managercommand = new SManagerLoginCommand();
 			boolean check = managercommand.execute2(request, response);
-			if (check==false){
+			
+			if (check==false) {
 				request.setAttribute("CHECK", check);
-				viewPage="managerlogin.jsp";
-				
-			} else{
-				viewPage="managerMain.jsp";
+				viewPage = "http://localhost:8080/All100Shoes/Manager/managerlogin.jsp";
+			} else {
+				viewPage = "http://localhost:8080/All100Shoes/Manager/managerMain.jsp";
 			}
 			break;
+			
+//			-------------- 예진 --------------------------
+			case("/Manager/userlist.do"):
+			managercommand = new SManagerUserListCommand();
+			managercommand.execute(request, response);
+			viewPage="managerUserList.jsp";
+			break;
+			
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
