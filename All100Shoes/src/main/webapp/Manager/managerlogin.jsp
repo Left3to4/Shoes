@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +93,7 @@ function backtomain(){
 <body class="text-center">
 
 	<main class="form-signin w-100 m-auto">
-		<form action="loginprocess.jsp" name="login" method="post">
+		<form action="login.do" name="login" method="post">
 			<h1 class="h3 mb-3 fw-normal">관리자 로그인</h1>
 
 			<div class="form-floating">
@@ -103,6 +105,9 @@ function backtomain(){
 					placeholder="Password"> <label for="floatingPassword">Password</label>
 			</div>
 			<input class="w-100 btn btn-lg btn-dark" type="submit" value="로그인">
+			<c:if test="${CHECK==false }">
+			<p class="lead" style="font-size:0.8em;margin:10px">ID 또는 비밀번호가 일치하지 않습니다.</p>
+			</c:if>
 			<button type="button" class="btn btn-link" style="color:black">ID 찾기</button>
 			<button type="button" class="btn btn-link" style="color:black">비밀번호 찾기</button><br>
 			<button type="button" class="btn btn-link" style="color:black">계정 생성</button><br>
