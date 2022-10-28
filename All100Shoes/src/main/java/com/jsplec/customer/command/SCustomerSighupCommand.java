@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.customer.dao.DaoSighup;
 
-public class SSignupCommand implements SCustomerCommand {
+public class SCustomerSighupCommand implements SCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -20,9 +20,6 @@ public class SSignupCommand implements SCustomerCommand {
 		DaoSighup dao = new DaoSighup();
 		dao.sighup(customerid, customerpw, customername, customerphone, customeraddress);
 		
-	
-	
-
 	}
 
 }

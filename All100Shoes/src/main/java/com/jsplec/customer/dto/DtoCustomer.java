@@ -16,6 +16,13 @@ public class DtoCustomer {
 	
 	
 	
+	public DtoCustomer(String customerid, String customername, String customerphone, String customeraddress) {
+		super();
+		this.customerid = customerid;
+		this.customername = customername;
+		this.customerphone = customerphone;
+		this.customeraddress = customeraddress;
+	}
 	public DtoCustomer(String customerid) {
 		super();
 		this.customerid = customerid;

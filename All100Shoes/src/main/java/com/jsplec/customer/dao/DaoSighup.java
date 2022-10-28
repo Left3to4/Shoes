@@ -18,7 +18,7 @@ public class DaoSighup {
 		public DaoSighup() {
 			try {
 				Context context = new InitialContext();
-				dataSource = (DataSource) context.lookup("java:comp/env/jdbc/shoesPJ");
+				dataSource = (DataSource) context.lookup("java:comp/env/jdbc/shoespj");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -45,7 +45,10 @@ public class DaoSighup {
 				if (resultSet.next()) { // true값일때만 가져온다
 					checked=resultSet.getInt(1);
 					checked = 0;
+					System.out.println("result 값 : " + checked);
+					 
 				}else{
+					checked=resultSet.getInt(1);
 					checked = 1;
 				}
 
@@ -76,7 +79,7 @@ public class DaoSighup {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "insert into customer (customerid,customerpw,customername,customerphone,customeraddress,customerinitdate) values(?,?,?,?,?,now())";
+			String query = "insert into shoespj.customer (customerid,customerpw,customername,customerphone,customeraddress,customerinitdate) values(?,?,?,?,?,now())";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, customerid);
 			preparedStatement.setString(2, customerpw);
@@ -94,7 +97,7 @@ public class DaoSighup {
 				if(connection != null) connection.close();
 			}catch(Exception e) {
 				e.printStackTrace();
-				System.out.println("아이디 : ");
+				
 			}
 		}
 	

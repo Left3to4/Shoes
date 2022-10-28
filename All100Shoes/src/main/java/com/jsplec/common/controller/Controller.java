@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.customer.command.SCustomerCommand;
 import com.jsplec.customer.command.SCustomerDetailCommand;
+import com.jsplec.customer.command.SCustomerSighupCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerLoginCommand;
 import com.jsplec.manager.command.SManagerUserListCommand;
