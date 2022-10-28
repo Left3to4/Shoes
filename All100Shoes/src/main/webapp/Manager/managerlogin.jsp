@@ -95,11 +95,11 @@ function backtomain(){
 			<h1 class="h3 mb-3 fw-normal">관리자 로그인</h1>
 
 			<div class="form-floating">
-				<input type="text" class="form-control" id="id" name="id"
+				<input type="text" class="form-control" id="id" name="managerid"
 					placeholder="name@example.com"> <label for="floatingInput">ID</label>
 			</div>
 			<div class="form-floating">
-				<input type="password" class="form-control" id="floatingPassword"
+				<input type="password" class="form-control" id="floatingPassword" name="managerpassword"
 					placeholder="Password"> <label for="floatingPassword">Password</label>
 			</div>
 			<input class="w-100 btn btn-lg btn-dark" type="submit" value="로그인">
