@@ -1,18 +1,21 @@
 package com.jsplec.manager.command;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jsplec.manager.dao.MMainDao;
+import com.jsplec.manager.dao.MUserListDao;
+import com.jsplec.manager.dto.MUserDto;
 
-public class SManagerMainSalesTodayCommand implements SManagerCommand {
+public class SManagerUserListCommand implements SManagerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		MMainDao dao = new MMainDao();
-		int result = dao.salesToday();
-		request.setAttribute("SALESTODAY", result);
+		MUserListDao dao = new MUserListDao();
+		ArrayList<MUserDto> dtos = dao.userList();
+		request.setAttribute("USERLIST", dtos);
 	}
 
 	@Override
