@@ -12,12 +12,7 @@
 	<%@include file="header.jsp"%>
 
 	<main>
-	 <!--
-	 	 https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/38d2ffca-b7ed-45d2-b3de-e3f9595048f5/%EC%97%90%EC%96%B4%EB%A7%A5%EC%8A%A4-90-g-%EA%B3%A8%ED%94%84%ED%99%94-a68FMm7V.png 
-		 https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/5b7fa589-76fe-42f4-967c-2a5deacf8eb0/%EC%97%90%EC%96%B4%EB%A7%A5%EC%8A%A4-90-g-%EA%B3%A8%ED%94%84%ED%99%94-a68FMm7V.png	
-	 	 https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ece2a59e-67a6-44d6-ba58-5c390e5ac43a/%EC%97%90%EC%96%B4%EB%A7%A5%EC%8A%A4-90-g-%EA%B3%A8%ED%94%84%ED%99%94-a68FMm7V.png
-	 	 https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/67b21dfe-c207-4c5f-9936-8efc660431fd/%EC%97%90%EC%96%B4%EB%A7%A5%EC%8A%A4-90-g-%EA%B3%A8%ED%94%84%ED%99%94-a68FMm7V.png
-	 -->
+	
 	  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
 	    <div class="card" style="width: 18rem; height: 18rem">
 		  <img src = "./shoesFolder1/1.png" class="card-img-top" alt="...">

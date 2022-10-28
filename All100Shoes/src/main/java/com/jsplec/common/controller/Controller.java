@@ -70,18 +70,23 @@ public class Controller extends HttpServlet {
 			
 			if (check==false) {
 				request.setAttribute("CHECK", check);
-				viewPage = "http://localhost:8080/All100Shoes/Manager/managerlogin.jsp";
+				viewPage = "managerlogin.jsp";
 			} else {
-				viewPage = "http://localhost:8080/All100Shoes/Manager/managerlogin.jsp";
+				viewPage = "managerMain.jsp";
 			}
 			break;
 			
 //			-------------- 예진 --------------------------
-			case("/Manager/userlist.do"):
+		case("/Manager/userlist.do"):
 			managercommand = new SManagerUserListCommand();
 			managercommand.execute(request, response);
 			viewPage="managerUserList.jsp";
 			break;
+//			-------------- 오수 --------------------------
+			
+//			-------------- 태권 --------------------------
+			
+//			-------------- 한별 --------------------------
 			
 		}
 		
