@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.customer.command.SCustomerCommand;
 import com.jsplec.manager.command.SManagerCommand;
+import com.jsplec.manager.command.SManagerLoginCommand;
 
 /**
  * Servlet implementation class Controller
@@ -46,14 +47,24 @@ public class Controller extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String viewPage=null;
-		SManagerCommand customercommand=null;
-		SCustomerCommand managercommand=null;
+		SManagerCommand managercommand = null;
+		SCustomerCommand customercommand = null;
 		
 		String uri=request.getRequestURI();
 		String conPath=request.getContextPath();
 		String com=uri.substring(conPath.length());
 		
 		switch(com) {
+
+		case("/login.do"):
+			managercommand=new SManagerLoginCommand();
+			boolean check=managercommand.execute2(request, response);
+			if (check==false){
+			request.setAttribute("CHECK", check);
+			viewPage="managerlogin.jsp";
+			} else{
+			viewPage="managerMain.jsp";
+			}
 		
 		}
 	}
