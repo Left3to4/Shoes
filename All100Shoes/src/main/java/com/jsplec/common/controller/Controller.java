@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.customer.command.SCustomerCommand;
+import com.jsplec.customer.command.SCustomerDetailCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerLoginCommand;
 import com.jsplec.manager.command.SManagerUserListCommand;
@@ -87,7 +88,11 @@ public class Controller extends HttpServlet {
 //			-------------- 태권 --------------------------
 			
 //			-------------- 한별 --------------------------
-			
+		case("/productDetail.do"):
+			customercommand = new SCustomerDetailCommand();
+			customercommand.execute(request, response);
+			viewPage = "productDetail.jsp";
+			break;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

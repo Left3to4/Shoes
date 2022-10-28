@@ -34,11 +34,11 @@
 	    <table>
 	    
 	    	<tr style = " position: relative;  left: 1000px; bottom: 300px">
-	    		<td>제목</td>
+	    		<td>${list.productmodel}</td>
 	    	</tr>
 	    
 	    	<tr style = " position: relative;  left: 1000px; bottom: 200px">
-	    		<td>가격</td>
+	    		<td>${list.productprice }</td>
 	    	</tr>
 	    
 	    </table>
