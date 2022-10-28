@@ -60,16 +60,11 @@ public class Controller extends HttpServlet {
 		switch(com) {
 
 //		-------------- 유승 --------------------------
-		case("/managerlogin.do"):
-			viewPage = "Manager/managerlogin.jsp";
-			break;
-		
 		case("/Manager/login.do"):
-			
 			managercommand = new SManagerLoginCommand();
 			boolean check = managercommand.execute2(request, response);
 			
-			if (check==false) {
+			if (check == false) {
 				request.setAttribute("CHECK", check);
 				viewPage = "managerlogin.jsp";
 			} else {
@@ -81,14 +76,14 @@ public class Controller extends HttpServlet {
 		case("/Manager/userlist.do"):
 			managercommand = new SManagerUserListCommand();
 			managercommand.execute(request, response);
-			viewPage="managerUserList.jsp";
+			viewPage = "managerUserList.jsp";
 			break;
 //			-------------- 오수 --------------------------
 			
 //			-------------- 태권 --------------------------
 			
 //			-------------- 한별 --------------------------
-		case("/productDetail.do"):
+		case("/Customer/productDetail.do"):
 			customercommand = new SCustomerDetailCommand();
 			customercommand.execute(request, response);
 			viewPage = "productDetail.jsp";

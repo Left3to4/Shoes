@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,11 +35,11 @@
 	    <table>
 	    
 	    	<tr style = " position: relative;  left: 1000px; bottom: 300px">
-	    		<td>${list.productmodel}</td>
+	    		<td>${list.productmodel[0]}</td>
 	    	</tr>
 	    
 	    	<tr style = " position: relative;  left: 1000px; bottom: 200px">
-	    		<td>${list.productprice }</td>
+	    		<td>${list.productprice[0] }</td>
 	    	</tr>
 	    
 	    </table>
@@ -75,27 +76,25 @@
     			</td>
 	    	</tr>
 	    
+	    <c:forEach items = "${list}" var = "dto">
 	   		 <tr style = " position: relative;  left: 700px; bottom: 320px;">
 				<td>
-					 <select style="width:500px;height:32px;">
-						<option>Korea</option>
-						<option>USA</option>
-						<option>Japan</option>
-						<option>China</option>
+					 <select style = "width:500px;height:32px;">
+						<option>${dto.productsize }</option>
 					</select>
 				</td>
 			</tr>
+	    </c:forEach>
 	    
+	    <c:forEach items = "${list}" var = "dto">
 	   		 <tr style = " position: relative;  left: 700px; bottom: 320px;">
 				<td>
 					 <select style="width:500px;height:32px;">
-						<option>Korea</option>
-						<option>USA</option>
-						<option>Japan</option>
-						<option>China</option>
+						<option>${dto.productstock }</option>
 					</select>
 				</td>
 			</tr>
+	    </c:forEach>
 
 			<tr style = " position: relative;  left: 700px; bottom: 300px;">
 				<td>
