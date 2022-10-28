@@ -72,7 +72,7 @@ public class Controller extends HttpServlet {
 				request.setAttribute("CHECK", check);
 				viewPage = "http://localhost:8080/All100Shoes/Manager/managerlogin.jsp";
 			} else {
-				viewPage = "http://localhost:8080/All100Shoes/Manager/managerMain.jsp";
+				viewPage = "http://localhost:8080/All100Shoes/Manager/managerlogin.jsp";
 			}
 			break;
 			
