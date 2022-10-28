@@ -1,8 +1,8 @@
 package com.jsplec.common.controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jsplec.customer.command.SCustomerCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerLoginCommand;
+
 
 /**
  * Servlet implementation class Controller
@@ -43,29 +44,34 @@ public class Controller extends HttpServlet {
 		actionDo(request, response);
 	}
 
-	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String viewPage=null;
+		String viewPage = null;
 		SManagerCommand managercommand = null;
 		SCustomerCommand customercommand = null;
 		
-		String uri=request.getRequestURI();
-		String conPath=request.getContextPath();
-		String com=uri.substring(conPath.length());
+		String uri = request.getRequestURI();
+		String conPath = request.getContextPath();
+		String com = uri.substring(conPath.length());
 		
 		switch(com) {
 
 		case("/login.do"):
-			managercommand=new SManagerLoginCommand();
-			boolean check=managercommand.execute2(request, response);
+			managercommand = new SManagerLoginCommand();
+			boolean check = managercommand.execute2(request, response);
 			if (check==false){
-			request.setAttribute("CHECK", check);
-			viewPage="managerlogin.jsp";
+				request.setAttribute("CHECK", check);
+				viewPage="managerlogin.jsp";
+				
 			} else{
-			viewPage="managerMain.jsp";
+				viewPage="managerMain.jsp";
 			}
-		
+			break;
 		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
+		
 	}
 }
