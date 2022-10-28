@@ -21,22 +21,19 @@
 	<nav class="navbar navbar-expand-lg bg-light" >
 	
 		<div class="container-fluid">
-			<h1 class="navbar-brand" href="#">USER LIST</h1>
+			<h1 class="navbar-brand" href="#">PRODUCT LIST</h1>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 				</button>
 			</div>
 				
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="align-items: center">
-			<form action= "userlist.do" class="d-flex" role="search">
-				<select name = "customer">
-					<option value = "id">아이디</option>
-					<option value = "name">이름</option>
-					<option value = "phone" selected = "selected">전화번호</option>
-					<option value = "address">주소</option>
-					<option value = "initdate">가입일</option>
-					<option value = "updatedate">수정일</option>
-					<option value = "deletedate">삭제일</option>
+			<form action= "productlist.do" class="d-flex" role="search">
+				<select name = "product">
+					<option value = "brand">브랜드</option>
+					<option value = "model" selected = "selected">제품명</option>
+					<option value = "size">사이즈</option>
+					<option value = "status">입고상태</option>
 				</select>&nbsp;&nbsp;&nbsp;
 				
 				<input type = "text" name = "content" size = "30" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -53,25 +50,24 @@
 		<thead>
 			<tr style="align-items: center">
 				<th scope="col">번호</th>
-				<th scope="col">아이디</th>
-				<th scope="col">이름</th>
-				<th scope="col">전화번호</th>
-				<th scope="col">주소</th>
-				<th scope="col">가입일</th>
-				<th scope="col">수정일</th>
-				<th scope="col">삭제일</th>
+				<th scope="col">브랜드</th>
+				<th scope="col">제품명</th>
+				<th scope="col">사이즈</th>
+				<th scope="col">가격</th>
+				<th scope="col">재고</th>
+				<th scope="col">입고여부</th>
 			</tr>
 		</thead>
 		
-		<c:forEach items = "${USERLIST}" var = "dto">
+		<c:forEach items = "${PRODUCTLIST}" var = "dto">
 				<tr>
-					<td>${dto.customerseq}</td>
-					<td>${dto.customername}</td>
-					<td>${dto.customerphone}</td>
-					<td>${dto.customeraddress}</td>
-					<td>${dto.customerinitdate}</td>
-					<td>${dto.customerupdatedate}</td>
-					<td>${dto.customerdeletedate}</td>
+					<td>${dto.productseq}</td>
+					<td>${dto.productbrand}</td>
+					<td>${dto.productmodel}</td>
+					<td>${dto.productsize}</td>
+					<td>${dto.productprice}</td>
+					<td>${dto.productstock}</td>
+					<td>${dto.productstatus}</td>
 				</tr>
 		</c:forEach>
 		
