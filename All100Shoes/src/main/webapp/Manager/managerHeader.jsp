@@ -27,14 +27,13 @@
 		<li><a href="managerMain.jsp" class="nav-link px-2 link-secondary">HOME</a></li>
 		<li><a href="managerUserList.jsp" class="nav-link px-2 link-secondary">USERS</a></li>
 		<li><a href="managerProductList.jsp" class="nav-link px-2 link-secondary">PRODUCTS</a></li>
-		<li><a href="#" class="nav-link px-2 link-secondary">SALES</a></li>
-		<li><a href="#" class="nav-link px-2 link-secondary">ORDER</a></li>
+		<li><a href="managerSales.jsp" class="nav-link px-2 link-secondary">SALES</a></li>
 		<li><a href="managerHistory.jsp" class="nav-link px-2 link-secondary">HISTORY</a></li>
 	</ul>
  
 	<div class="col-md-4 text-end">
 			<form name="loginokay" method="post">
-				${MANAGERNAME }님, 안녕하세요! <input type="button" class="btn btn-dark"
+				${MANAGERNAME}님, 안녕하세요! <input type="button" class="btn btn-dark"
 					onclick="mypage()" value="마이페이지"> <input type="button"
 					class="btn btn-outline-dark me-2" onclick="logout()" value="로그아웃">
 			</form>

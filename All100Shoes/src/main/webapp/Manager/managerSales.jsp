@@ -21,7 +21,7 @@
 	<nav class="navbar navbar-expand-lg bg-light" >
 	
 		<div class="container-fluid">
-			<h1 class="navbar-brand" href="#">HISTORY</h1>
+			<h1 class="navbar-brand" href="#">SALES LIST</h1>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 				</button>
@@ -29,10 +29,8 @@
 				
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="align-items: center">
 			<form action= "userlist.do" class="d-flex" role="search">
-				<select name = "history">
-					<option value = "model" selected = "selected">제품명</option>
-					<option value = "size">사이즈</option>
-					<option value = "orderdate">주문일</option>
+				<select name = "customer">
+					<option value = "date">날짜</option>
 				</select>&nbsp;&nbsp;&nbsp;
 				
 				<input type = "text" name = "content" size = "30" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -49,22 +47,16 @@
 		<thead>
 			<tr style="align-items: center">
 				<th scope="col">번호</th>
-				<th scope="col">제품명</th>
-				<th scope="col">사이즈</th>
-				<th scope="col">수량</th>
-				<th scope="col">가격</th>
-				<th scope="col">주문일</th>
+				<th scope="col">매출</th>
+				<th scope="col">날짜</th>
 			</tr>
 		</thead>
 		
-		<c:forEach items = "${HISTORYLIST}" var = "dto">
+		<c:forEach items = "${SALESLIST}" var = "dto">
 				<tr>
-					<td>${dto.buyid}</td>
-					<td>${dto.productmodel}</td>
-					<td>${dto.productsize}</td>
-					<td>${dto.buyquantity}</td>
-					<td>${dto.buyprice}</td>
-					<td>${dto.buyorderdate}</td>
+					<td>${dto.seq}</td>
+					<td>${dto.sales}</td>
+					<td>${dto.orderdate}</td>
 				</tr>
 		</c:forEach>
 		
