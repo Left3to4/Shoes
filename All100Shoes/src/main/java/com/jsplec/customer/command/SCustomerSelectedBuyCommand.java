@@ -3,19 +3,17 @@ package com.jsplec.customer.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jsplec.customer.dao.SCustomerCartListDeleteDao;
+import com.jsplec.customer.dao.SCustomerSelectedBuyDao;
 
-public class SCustomerCartListDeleteCommand implements SCustomerCommand {
+public class SCustomerSelectedBuyCommand implements SCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		String orderid[] = request.getParameterValues("orderid");
 
-		String[] orderid = request.getParameterValues("orderid");
-		
-		
-		SCustomerCartListDeleteDao dao = new SCustomerCartListDeleteDao();
-		
-		dao.cartListDelete(orderid);
+		SCustomerSelectedBuyDao dao = new SCustomerSelectedBuyDao();
+		dao.selectedBuy(orderid);
 		
 	}
 

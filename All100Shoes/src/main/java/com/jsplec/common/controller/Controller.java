@@ -19,6 +19,7 @@ import com.jsplec.customer.command.SCustomerIdCheckCommand;
 import com.jsplec.customer.command.SCustomerLoginCommand;
 import com.jsplec.customer.command.SCustomerProductClickCommand;
 import com.jsplec.customer.command.SCustomerProductListCommand;
+import com.jsplec.customer.command.SCustomerSelectedBuyCommand;
 import com.jsplec.manager.command.SManagerAddCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerIdCheckCommand;
@@ -167,19 +168,32 @@ public class Controller extends HttpServlet {
 		
 		// 장바구니 리스트 출력
 		case("/Customer/customerCartPage.do"):
-			System.out.println("1");
 			customercommand = new SCustomerCartListCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerCartPage.jsp";
 			break;
 			
+		// 장바구니 상품 구매하기
+		case("/Customer/selectedProductBuy.do"):
+			customercommand = new SCustomerSelectedBuyCommand();
+			customercommand.execute(request, response);
+			viewPage = "main.jsp";
+			break;
+		
 		// 장바구니 상품 삭제
 		case("/Customer/cartListDelete.do"):
 			customercommand = new SCustomerCartListDeleteCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerCartPage.do";
 			break;
-			
+		
+		// 장바구니 선택 상품 삭제하기
+		case("/Customer/selectedProductDelete.do"):
+			customercommand = new SCustomerCartListDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCartPage.do";
+			break;
+		
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

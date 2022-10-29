@@ -7,11 +7,11 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class SCustomerCartListDeleteDao {
+public class SCustomerSelectedBuyDao {
 
 	DataSource dataSource;
 	
-	public SCustomerCartListDeleteDao() {
+	public SCustomerSelectedBuyDao() {
 		try {
 			Context context = new InitialContext();
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mvc");
@@ -20,8 +20,8 @@ public class SCustomerCartListDeleteDao {
 		}
 	}
 	
-	public void cartListDelete(String[] orderid) {
-		
+	public void selectedBuy(String[] orderid) {
+
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -30,11 +30,11 @@ public class SCustomerCartListDeleteDao {
 			
 			for(int i = 0; i < orderid.length; i++) {
 				
-				String query = "delete from orders where orderid = ?";
+				String query = "update orders set orderstatus = '구매' where orderid = ?";
 				preparedStatement = connection.prepareStatement(query);
 				
 				preparedStatement.setString(1, orderid[i]);
-				
+	
 				preparedStatement.executeUpdate();
 			}
 			
@@ -48,6 +48,6 @@ public class SCustomerCartListDeleteDao {
 				e.printStackTrace();
 			}
 		}
-	} // cartListDelete() --
+	} // selectedBuy() --
 	
 }

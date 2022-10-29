@@ -74,4 +74,44 @@ public class SCustomerCartListDao {
 		return dtos;
 	} // productDetailSize() --
 	
+	public SCustomerCartListDto cartTotalPrice(HttpServletRequest request) {
+		
+		SCustomerCartListDto dto = null;
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		HttpSession session = request.getSession();
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query1 = "select count(*), sum(ordersaleprice) from orders where orderstatus = '장바구니' and customerid = '" + session.getAttribute("CUSTOMERID") + "'";
+			System.out.println("session : " + session.getAttribute("CUSTOMERID"));
+			preparedStatement = connection.prepareStatement(query1);
+			
+			rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				int listCount = rs.getInt(1);
+				int listTotalSum = rs.getInt(2);
+
+				dto = new SCustomerCartListDto(listCount, listTotalSum);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	} // productDetailSize() --
+	
 }

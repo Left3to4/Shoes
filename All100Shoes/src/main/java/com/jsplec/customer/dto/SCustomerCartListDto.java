@@ -10,6 +10,10 @@ public class SCustomerCartListDto {
 	String productsize;
 	int orderquantity;
 	
+	int listCount;	// 장바구니에 담은 상품 총 개수
+	int listTotalSum;	// 장바구니에 담은 상품 총 가격
+	
+	
 	public SCustomerCartListDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,10 +32,15 @@ public class SCustomerCartListDto {
 		this.orderquantity = orderquantity;
 	}
 
+	
+	public SCustomerCartListDto(int listCount, int listTotalSum) {
+		super();
+		this.listCount = listCount;
+		this.listTotalSum = listTotalSum;
+	}
 
 
-	
-	
+
 	public int getOrderid() {
 		return orderid;
 	}
@@ -86,6 +95,30 @@ public class SCustomerCartListDto {
 
 	public void setOrderquantity(int orderquantity) {
 		this.orderquantity = orderquantity;
+	}
+
+
+
+	public int getListCount() {
+		return listCount;
+	}
+
+
+
+	public void setListCount(int listCount) {
+		this.listCount = listCount;
+	}
+
+
+
+	public int getListTotalSum() {
+		return listTotalSum;
+	}
+
+
+
+	public void setListTotalSum(int listTotalSum) {
+		this.listTotalSum = listTotalSum;
 	}
 	
 	
