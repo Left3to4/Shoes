@@ -20,6 +20,7 @@ import com.jsplec.customer.command.SCustomerLoginCommand;
 import com.jsplec.customer.command.SCustomerProductClickCommand;
 import com.jsplec.customer.command.SCustomerProductListCommand;
 import com.jsplec.customer.command.SCustomerSelectedBuyCommand;
+import com.jsplec.manager.command.MMypageShowInfoCommand;
 import com.jsplec.manager.command.SManagerAddCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerIdCheckCommand;
@@ -108,6 +109,12 @@ public class Controller extends HttpServlet {
 	         managercommand.execute(request, response);
 	         viewPage="managerlogin.jsp";
 	         break;
+	        
+	      case ("/Manager/mypage.do"):
+	    	   managercommand=new MMypageShowInfoCommand();
+	    	   managercommand.execute(request, response);
+	    	   viewPage="managerMypage.jsp";
+	    	   break;
 	         
 //			-------------- 예진 --------------------------
 		case("/Manager/userlist.do"):

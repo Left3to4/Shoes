@@ -20,6 +20,8 @@ public class SCustomerCartCommand implements SCustomerCommand {
 		session.setAttribute("CUSTOMERID", "onestar");
 		
 		SCustomerCartDao dao = new SCustomerCartDao();
+
+		dao.selectProduct();
 		dao.cartInsert(productid, productprice, productstock);
 		
 	}
