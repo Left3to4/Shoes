@@ -40,8 +40,8 @@ public class SCustomerProductListDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query1 = "select productmodel, productprice from product ";
-			String query2 = "where productmodel like '%%' group by productmodel, productprice";
+			String query1 = "select productmodel, productprice, productbrand from product ";
+			String query2 = "where productmodel like '%%' group by productmodel, productprice, productbrand";
 
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
@@ -49,8 +49,9 @@ public class SCustomerProductListDao {
 			while (resultSet.next()) {
 				String productmodel = resultSet.getString("productmodel");
 				int productprice = resultSet.getInt("productprice");
+				String productbrand = resultSet.getString("productbrand");
 
-				SCustomerProductListDto dto = new SCustomerProductListDto(productmodel, productprice);
+				SCustomerProductListDto dto = new SCustomerProductListDto(productmodel, productprice, productbrand);
 				dtos.add(dto);
 			}
 
