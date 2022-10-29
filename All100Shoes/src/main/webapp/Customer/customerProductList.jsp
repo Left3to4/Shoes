@@ -139,13 +139,16 @@
 	</header>
 
 	<main>
+	
 		<div class="row">
 			
 			<c:forEach items="${productList}" var="dto">
 				<div class="col">
 					<div class="card" style="width: 14rem;">
+					<a href="https://google.com">
 						<img src="./productListImage/practice.png" class="card-img-top"
 							alt="...">
+					</a>
 						<div class="card-body">
 							<p class="card-text" align="center">${dto.productmodel}</p>
 							<p class="card-text" align="center">${dto.productprice}</p>

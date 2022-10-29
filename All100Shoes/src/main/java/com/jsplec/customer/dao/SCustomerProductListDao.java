@@ -47,14 +47,10 @@ public class SCustomerProductListDao {
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				int productid = resultSet.getInt("productid");
 				String productmodel = resultSet.getString("productmodel");
 				int productprice = resultSet.getInt("productprice");
-				String productbrand = resultSet.getString("productbrand");
-				String productcategory = resultSet.getString("productcategory");
 
-				SCustomerProductListDto dto = new SCustomerProductListDto(productid, productmodel, productprice, productbrand,
-						productcategory);
+				SCustomerProductListDto dto = new SCustomerProductListDto(productmodel, productprice);
 				dtos.add(dto);
 			}
 
