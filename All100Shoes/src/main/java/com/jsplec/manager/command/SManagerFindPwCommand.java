@@ -10,7 +10,14 @@ public class SManagerFindPwCommand implements SManagerCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		String managername=request.getParameter("managername");
+		String managerphone=request.getParameter("managerphone");
+		String managerid=request.getParameter("managerid");
 		
+		
+		MLoginDao dao=new MLoginDao();
+		String managerpw=dao.managerFindPw(managername, managerphone, managerid);
+		request.setAttribute("MANAGERPW", managerpw);
 	}
 
 	@Override

@@ -22,6 +22,12 @@ function backtomain(){
 	form.action="http://localhost:8080/All100Shoes/Customer/main.jsp";
 	form.submit();
 }
+
+function findid(){
+	var form=document.login;
+	form.action="managerFindId.jsp";
+	form.submit();
+}
 </script>
 
 
@@ -108,9 +114,9 @@ function backtomain(){
 			<c:if test="${CHECK==false }">
 			<p class="lead" style="font-size:0.8em;margin:10px">ID 또는 비밀번호가 일치하지 않습니다.</p>
 			</c:if>
-			<button type="button" class="btn btn-link" style="color:black">ID 찾기</button>
-			<button type="button" class="btn btn-link" style="color:black">비밀번호 찾기</button><br>
-			<button type="button" class="btn btn-link" style="color:black">계정 생성</button><br>
+			<button type="button" class="btn btn-link" style="color:black" onclick="findid()">ID 찾기</button>
+			<button type="button" class="btn btn-link" style="color:black" onclick="findpw()">비밀번호 찾기</button><br>
+			<button type="button" class="btn btn-link" style="color:black" onclick="makeaccount()">계정 생성</button><br>
 			<button type="button" class="btn btn-link" style="color:black" onclick="backtomain()">메인으로</button><br>
 			
 		</form>
