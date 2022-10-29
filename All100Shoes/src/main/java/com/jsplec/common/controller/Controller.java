@@ -131,7 +131,7 @@ public class Controller extends HttpServlet {
 				request.setAttribute("CHECK1", check1);
 				viewPage = "login.jsp";
 			} else {
-				viewPage = "main.jsp";
+				viewPage = "customerProductList.do";
 			}
 			break;
 			
@@ -145,20 +145,20 @@ public class Controller extends HttpServlet {
 			
 //			-------------- 한별 --------------------------
 		
+        // 상품 상세정보 리스트
+  		case("/Customer/productDetail.do"):
+  			customercommand = new SCustomerDetailCommand();
+  			customercommand.execute(request, response);
+  			viewPage = "productClick.do";
+  			break;
+	         
 		// 상품 상세정보 리스트
 		case("/Customer/productClick.do"):
 			customercommand = new SCustomerProductClickCommand();
 			customercommand.execute(request, response);
-			viewPage = "productDetail.do";
-			break;
-		
-		// 상품 상세정보 리스트
-		case("/Customer/productDetail.do"):
-			customercommand = new SCustomerDetailCommand();
-			customercommand.execute(request, response);
 			viewPage = "productDetail.jsp";
 			break;
-
+		
 		// 장바구니 담기
 		case("/Customer/productCart.do"):
 			customercommand = new SCustomerCartCommand();

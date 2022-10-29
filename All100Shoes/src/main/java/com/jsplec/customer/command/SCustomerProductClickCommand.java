@@ -15,8 +15,7 @@ public class SCustomerProductClickCommand implements SCustomerCommand {
 
 		SCustomerDetailDao dao = new SCustomerDetailDao();
 		
-		String productmodel = dao.productClick();
-		
+		String productmodel = (String) request.getAttribute("productmodel");
 		ArrayList<SCustomerDetailDto> dtos = dao.productDetailSize(productmodel);
 		
 		request.setAttribute("list", dtos);

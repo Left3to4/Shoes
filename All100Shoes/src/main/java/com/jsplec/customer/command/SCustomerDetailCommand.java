@@ -12,9 +12,11 @@ public class SCustomerDetailCommand implements SCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		SCustomerDetailDao dao = new SCustomerDetailDao();
+		String productmodel = request.getParameter("productmodel");
 		
-		SCustomerDetailDto dto = dao.productDetailModel();
+		SCustomerDetailDto dto = dao.productDetailModel(productmodel);
 		
+		request.setAttribute("productmodel", productmodel);
 		request.setAttribute("detail", dto);
 		
 	}

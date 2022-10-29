@@ -25,43 +25,7 @@ public class SCustomerDetailDao {
 	}
 	
 	
-	public String productClick() {
-		
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet rs = null;
-		
-		String productmodel = null;
-		
-		try {
-			connection = dataSource.getConnection();
-			
-			String query = "select productmodel from product where productid = 50";
-			
-			preparedStatement = connection.prepareStatement(query);
-			rs = preparedStatement.executeQuery();
-			
-			if(rs.next()) {
-				
-				productmodel = rs.getString(1);
-				
-			}
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(rs != null) rs.close();
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null) connection.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return productmodel;
-	} // productDetail() --
-	
-	public SCustomerDetailDto productDetailModel() {
+	public SCustomerDetailDto productDetailModel(String productname) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -71,7 +35,7 @@ public class SCustomerDetailDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select productid, productmodel, productprice from product where productid = 50";
+			String query = "select productid, productmodel, productprice from product where productmodel = '" + productname + "'";
 			
 			preparedStatement = connection.prepareStatement(query);
 			rs = preparedStatement.executeQuery();

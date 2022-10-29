@@ -32,7 +32,6 @@ public class SCustomerCartDao {
 			String query = "insert into orders (customerid, shoesid, orderquantity, ordersaleprice, orderstatus) values (?, ?, ?, ?, '장바구니')";
 			preparedStatement = connection.prepareStatement(query);
 			
-			System.out.println(session.getAttribute("CUSTOMERID"));
 			preparedStatement.setString(1, (String)session.getAttribute("CUSTOMERID"));
 			preparedStatement.setInt(2, shoesid);
 			preparedStatement.setInt(3, orderquantity);

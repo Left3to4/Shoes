@@ -108,9 +108,7 @@
 
 		<tr style = " position: relative;  left: 700px; bottom: 300px;">
 			<td>
-				<button type = "button" class="btn btn-dark me-2" style = "width: 240px" onclick="cartInsert()">CART</button>
-				<button type = "button" class="btn btn-dark me-2" style = "width: 240px">BUY NOW</button>
-				<button type = "button" class="btn btn-dark me-2" style = "width: 240px" onclick="cartList()">장바구니</button>
+				<button type = "button" class="btn btn-dark me-2" style = "width: 500px" onclick="cartInsert()">CART</button>
 			</td>
 		</tr>
     </table>
