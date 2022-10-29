@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -137,70 +139,20 @@
 	</header>
 
 	<main>
-
-
 		<div class="row">
-			<div class="col">
-				<div class="card" style="width: 15rem;">
-					<img src="./productListImage/practice.png" class="card-img-top"
-						alt="...">
-					<div class="card-body">
-						<p class="card-text" align="center">Nike Air Jordan 1</p>
-						<p class="card-text" align="center">price : 400000₩</p>
+			
+			<c:forEach items="${productList}" var="dto">
+				<div class="col">
+					<div class="card" style="width: 14rem;">
+						<img src="./productListImage/practice.png" class="card-img-top"
+							alt="...">
+						<div class="card-body">
+							<p class="card-text" align="center">${dto.productmodel}</p>
+							<p class="card-text" align="center">${dto.productprice}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="width: 15rem;">
-					<img src="./productListImage/practice.png" class="card-img-top"
-						alt="...">
-					<div class="card-body">
-						<p class="card-text" align="center">Nike Air Jordan 1</p>
-						<p class="card-text" align="center" >price : 400000₩</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="width: 15rem;">
-					<img src="./productListImage/practice.png" class="card-img-top"
-						alt="...">
-					<div class="card-body">
-						<p class="card-text" align="center">Nike Air Jordan 1</p>
-						<p class="card-text" align="center">price : 400000₩</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="width: 15rem;">
-					<img src="./productListImage/practice.png" class="card-img-top"
-						alt="...">
-					<div class="card-body">
-						<p class="card-text" align="center">Nike Air Jordan 1</p>
-						<p class="card-text" align="center">price : 400000₩</p>
-
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="width: 15rem;">
-					<img src="sport-shoe.png" class="card-img-top" alt="...">
-					<div class="card-body">
-						<p class="card-text" align="center">Nike Air Jordan 1</p>
-						<p class="card-text" align="center">price : 400000₩</p>
-
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="width: 15rem;">
-					<img src="./productListImage/practice.png" class="card-img-top"
-						alt="...">
-					<div class="card-body">
-						<p class="card-text" align="center">Nike Air Jordan 1</p>
-						<p class="card-text" align="center">price : 400000₩</p>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 
 	</main>
