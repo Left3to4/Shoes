@@ -42,10 +42,10 @@ public class MMypageDao {
 			rs = ps.executeQuery();
 			
 			if (rs.next()) {
-				managerpw=rs.getString(2);
-				managername=rs.getString(3);
-				managerphone=rs.getString(4);
-				dto=new MMypageDto(managerid, managerpw, managername, managerphone);
+				managerpw=rs.getString(1);
+				managername=rs.getString(2);
+				managerphone=rs.getString(3);
+				dto=new MMypageDto(managerid, managername, managerpw, managerphone);
 			}
 			
 		} catch (Exception e) {
