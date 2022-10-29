@@ -24,12 +24,12 @@
 
 <img src="sport-shoe.png" style="width: 80px">
 	<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-10">
-		<li><a href="#" class="nav-link px-2 link-secondary">HOME</a></li>
-		<li><a href="#" class="nav-link px-2 link-secondary">USERS</a></li>
-		<li><a href="#" class="nav-link px-2 link-secondary">PRODUCTS</a></li>
+		<li><a href="managerMain.jsp" class="nav-link px-2 link-secondary">HOME</a></li>
+		<li><a href="managerUserList.jsp" class="nav-link px-2 link-secondary">USERS</a></li>
+		<li><a href="managerProductList.jsp" class="nav-link px-2 link-secondary">PRODUCTS</a></li>
 		<li><a href="#" class="nav-link px-2 link-secondary">SALES</a></li>
 		<li><a href="#" class="nav-link px-2 link-secondary">ORDER</a></li>
-		<li><a href="#" class="nav-link px-2 link-secondary">HISTORY</a></li>
+		<li><a href="managerHistory.jsp" class="nav-link px-2 link-secondary">HISTORY</a></li>
 	</ul>
  
 	<div class="col-md-4 text-end">
