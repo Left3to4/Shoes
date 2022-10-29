@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jsplec.customer.command.SCustomerCartCommand;
+import com.jsplec.customer.command.SCustomerCartListCommand;
+import com.jsplec.customer.command.SCustomerCartListDeleteCommand;
 import com.jsplec.customer.command.SCustomerCommand;
 import com.jsplec.customer.command.SCustomerDetailCommand;
-import com.jsplec.customer.command.SCustomerIdCheckCommand;
-import com.jsplec.customer.command.SCustomerLoginCommand;
+import com.jsplec.customer.command.SCustomerProductClickCommand;
 import com.jsplec.manager.command.SManagerAddCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerIdCheckCommand;
@@ -113,16 +115,42 @@ public class Controller extends HttpServlet {
 //			-------------- 태권 --------------------------
 			
 //			-------------- 한별 --------------------------
-		case("/Customer/productDetailSize.do"):
+		
+		// 상품 상세정보 리스트
+		case("/Customer/productClick.do"):
+			customercommand = new SCustomerProductClickCommand();
+			customercommand.execute(request, response);
+			viewPage = "productDetail.do";
+			break;
+		
+		// 상품 상세정보 리스트
+		case("/Customer/productDetail.do"):
 			customercommand = new SCustomerDetailCommand();
 			customercommand.execute(request, response);
 			viewPage = "productDetail.jsp";
 			break;
 
-		case("/Customer/productDetailStock.do"):
-			System.out.println("넘어옴");
+		// 장바구니 담기
+		case("/Customer/productCart.do"):
+			customercommand = new SCustomerCartCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCartPage.do";
 			break;
 		
+		// 장바구니 리스트 출력
+		case("/Customer/customerCartPage.do"):
+			customercommand = new SCustomerCartListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCartPage.jsp";
+			break;
+			
+		// 장바구니 상품 삭제
+		case("/Customer/cartListDelete.do"):
+			customercommand = new SCustomerCartListDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCartPage.do";
+			break;
+			
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

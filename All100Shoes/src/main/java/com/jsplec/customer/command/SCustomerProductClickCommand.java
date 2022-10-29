@@ -1,21 +1,25 @@
 package com.jsplec.customer.command;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.customer.dao.SCustomerDetailDao;
 import com.jsplec.customer.dto.SCustomerDetailDto;
 
-public class SCustomerDetailCommand implements SCustomerCommand {
+public class SCustomerProductClickCommand implements SCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		SCustomerDetailDao dao = new SCustomerDetailDao();
 		
-		SCustomerDetailDto dto = dao.productDetailModel();
+		String productmodel = dao.productClick();
 		
-		request.setAttribute("detail", dto);
+		ArrayList<SCustomerDetailDto> dtos = dao.productDetailSize(productmodel);
+		
+		request.setAttribute("list", dtos);
 		
 	}
 
@@ -24,5 +28,5 @@ public class SCustomerDetailCommand implements SCustomerCommand {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 }

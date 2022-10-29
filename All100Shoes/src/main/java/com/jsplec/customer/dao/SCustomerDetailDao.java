@@ -25,7 +25,7 @@ public class SCustomerDetailDao {
 	}
 	
 	
-	public String productDetail() {
+	public String productClick() {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -61,14 +61,52 @@ public class SCustomerDetailDao {
 		return productmodel;
 	} // productDetail() --
 	
-	public ArrayList<SCustomerDetailDto> productDetail2(String productname) {
+	public SCustomerDetailDto productDetailModel() {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		SCustomerDetailDto dto = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "select productid, productmodel, productprice from product where productid = 50";
+			
+			preparedStatement = connection.prepareStatement(query);
+			rs = preparedStatement.executeQuery();
+			
+			if(rs.next()) {
+				
+				int productid = rs.getInt(1);
+				String productmodel = rs.getString(2);
+				int productprice = rs.getInt(3);
+				
+				dto = new SCustomerDetailDto(productid, productprice, productmodel);
+				
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	} // productDetailModel() --
+	
+	public ArrayList<SCustomerDetailDto> productDetailSize(String productname) {
 		
 		ArrayList<SCustomerDetailDto> dtos = new ArrayList<SCustomerDetailDto>();
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet rs = null;
-		
 		
 		try {
 			connection = dataSource.getConnection();
@@ -100,7 +138,7 @@ public class SCustomerDetailDao {
 			}
 		}
 		return dtos;
-	} // productDetail2() --
+	} // productDetailSize() --
 	
 	
 	

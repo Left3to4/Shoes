@@ -28,6 +28,17 @@ public class SCustomerDetailDto {
 
 
 
+	public SCustomerDetailDto(int productid, int productprice, String productmodel) {
+		super();
+		this.productid = productid;
+		this.productprice = productprice;
+		this.productmodel = productmodel;
+	}
+
+
+
+
+
 	public int getProductid() {
 		return productid;
 	}

@@ -3,19 +3,18 @@ package com.jsplec.customer.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jsplec.customer.dao.SCustomerDetailDao;
-import com.jsplec.customer.dto.SCustomerDetailDto;
+import com.jsplec.customer.dao.SCustomerCartListDeleteDao;
 
-public class SCustomerDetailCommand implements SCustomerCommand {
+public class SCustomerCartListDeleteCommand implements SCustomerCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
-		SCustomerDetailDao dao = new SCustomerDetailDao();
+		int orderid = Integer.parseInt(request.getParameter("orderid"));
 		
-		SCustomerDetailDto dto = dao.productDetailModel();
+		SCustomerCartListDeleteDao dao = new SCustomerCartListDeleteDao();
 		
-		request.setAttribute("detail", dto);
+		dao.cartListDelete(orderid);
 		
 	}
 

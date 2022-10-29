@@ -17,9 +17,8 @@
 	<div class="col-md-4 text-end">
 		<c:if test="${id==null }">
 			<form name="loginbtn" method="post">
-				<input type="button" class="btn btn-outline-dark me-2"
-					onclick="login()" value="Log in"> <input type="button"
-					class="btn btn-dark me-2" onclick="signup()" value="Sign Up">
+				<input type="button" class="btn btn-outline-dark me-2" onclick="login()" value="Log in"> 
+				<input type="button" class="btn btn-dark me-2" onclick="signup()" value="Sign Up">
 			</form>
 		</c:if>
 		<%-- <c:if test="${id!=null }">
