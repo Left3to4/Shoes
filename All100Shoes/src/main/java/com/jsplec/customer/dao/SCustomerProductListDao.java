@@ -31,7 +31,7 @@ public class SCustomerProductListDao {
 	// Method
 
 	// product 리스트 출력
-	public ArrayList<SCustomerProductListDto> productList() {
+	public ArrayList<SCustomerProductListDto> productList(String queryName, String content) {
 		ArrayList<SCustomerProductListDto> dtos = new ArrayList<SCustomerProductListDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -40,8 +40,8 @@ public class SCustomerProductListDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query1 = "select productmodel, productprice, productbrand from product ";
-			String query2 = "where productmodel like '%%' group by productmodel, productprice, productbrand";
+			String query1 = "select productmodel, productprice, productbrand, productcategory from product ";
+			String query2 = "where " + queryName + " like '%" + content + "%' group by productbrand, productmodel, productprice, productcategory";
 
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			resultSet = preparedStatement.executeQuery();
@@ -50,8 +50,9 @@ public class SCustomerProductListDao {
 				String productmodel = resultSet.getString("productmodel");
 				int productprice = resultSet.getInt("productprice");
 				String productbrand = resultSet.getString("productbrand");
+				String productcategory = resultSet.getString("productcategory");
 
-				SCustomerProductListDto dto = new SCustomerProductListDto(productmodel, productprice, productbrand);
+				SCustomerProductListDto dto = new SCustomerProductListDto(productmodel, productprice, productbrand, productcategory);
 				dtos.add(dto);
 			}
 

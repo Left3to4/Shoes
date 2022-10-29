@@ -137,31 +137,32 @@
 				class="py-2 d-none d-md-inline-block" href="#">Cart</a>
 		</nav>
 	</header>
-	
-	<form action="customerProductList.do">
-		검색 선택 : 
-			<select name="query">
-				<option value="productmodel" selected="selected">model</option>
-				<option value="productbrand">brand</option>
-			</select>&nbsp;&nbsp;&nbsp;
-			<input type="text" name="content" size="30">
-			<input type="submit" value="검색">
-	</form>
 
 	<main>
 	
-		<div class="row">
+			<div class="row">
 			
-			<c:forEach items="${productList}" var="dto">
 				<div class="col">
 					<div class="card" style="width: 14rem;">
-					<a href="productDetail.do?productmodel=${dto.productmodel}">
+					<a href="customerProductList.do">
 						<img src="./productListImage/practice.png" class="card-img-top"
-							alt="${dto.productmodel}">
+							alt="전체브랜드">
 					</a>
 						<div class="card-body">
-							<p class="card-text" align="center">${dto.productbrand} ${dto.productmodel}</p>
-							<p class="card-text" align="center">${dto.productprice}</p>
+							<p class="card-text" align="center">전체브랜드</p>
+						</div>
+					</div>
+				</div>
+				
+			<c:forEach items="${brandList}" var="dto">
+				<div class="col">
+					<div class="card" style="width: 14rem;">
+					<a href="customerProductList.do?query=productbrand&content=${dto.productbrand}">
+						<img src="./productListImage/practice.png" class="card-img-top"
+							alt="${dto.productbrand}" name="${dto.productbrand}">
+					</a>
+						<div class="card-body">
+							<p class="card-text" align="center">${dto.productbrand}</p>
 						</div>
 					</div>
 				</div>

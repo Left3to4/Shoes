@@ -7,6 +7,7 @@ public class SCustomerProductListDto {
 	String productmodel;
 	int productprice;
 	String productbrand;
+	String productcategory;
 
 	// Constructor
 
@@ -14,11 +15,12 @@ public class SCustomerProductListDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SCustomerProductListDto(String productmodel, int productprice, String productbrand) {
+	public SCustomerProductListDto(String productmodel, int productprice, String productbrand, String productcategory) {
 		super();
 		this.productmodel = productmodel;
 		this.productprice = productprice;
 		this.productbrand = productbrand;
+		this.productcategory = productcategory;
 	}
 
 	public String getProductmodel() {
@@ -43,6 +45,14 @@ public class SCustomerProductListDto {
 
 	public void setProductbrand(String productbrand) {
 		this.productbrand = productbrand;
+	}
+	
+	public String getProductcategory() {
+		return productcategory;
+	}
+	
+	public void setProductcategory(String productcategory) {
+		this.productcategory = productcategory;
 	}
 
 }
