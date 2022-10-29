@@ -26,5 +26,9 @@ public class SCustomerProductListCommand implements SCustomerCommand {
 		ArrayList<SCustomerProductListDto> dtos = dao.list(queryName, content);
 		request.setAttribute("list", dtos);
 	}
+	public boolean execute2(HttpServletRequest request, HttpServletResponse response) {
+		return false;
+	}
+	
 
 }

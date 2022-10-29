@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,9 +23,9 @@ function backtomain(){
 	form.submit();
 }
 
-function managerlogin(){
+function customerSighup(){
 	var form=document.login;
-	form.action="http://localhost:8080/All100Shoes/Manager/managerlogin.jsp";
+	form.action="http://localhost:8080/All100Shoes/Customer/customerSighup.jsp";
 	form.submit();
 }
 </script>
@@ -96,21 +98,24 @@ function managerlogin(){
 <body class="text-center">
 
 	<main class="form-signin w-100 m-auto">
-		<form action="loginprocess.jsp" name="login" method="post">
+		<form action="login.do" name="login" method="post">
 			<h1 class="h3 mb-3 fw-normal">로그인</h1>
 
 			<div class="form-floating">
-				<input type="text" class="form-control" id="id" name="id"
+				<input type="text" class="form-control" id="id" name="customerid"
 					placeholder="name@example.com"> <label for="floatingInput">ID</label>
 			</div>
 			<div class="form-floating">
-				<input type="password" class="form-control" id="floatingPassword"
+				<input type="password" class="form-control" id="floatingPassword" name ="customerpw"
 					placeholder="Password"> <label for="floatingPassword">Password</label>
 			</div>
 			<input class="w-100 btn btn-lg btn-dark" type="submit" value="로그인">
+			<c:if test="${CHECK1==false }">
+			<p class="lead" style="font-size:0.8em;margin:10px">ID 또는 비밀번호가 일치하지 않습니다.</p>
+			</c:if>
 			<button type="button" class="btn btn-link" style="color:black">ID 찾기</button>
 			<button type="button" class="btn btn-link" style="color:black">비밀번호 찾기</button><br>
-			처음 오셨나요?<button type="button" class="btn btn-link" style="color:black">회원가입</button><br>
+			처음 오셨나요?<button type="button" class="btn btn-link" style="color:black" onclick="customerSighup()">회원가입</button><br>
 			관리자이신가요?<button type="button" class="btn btn-link" style="color:black" onclick="managerlogin()">관리자 로그인</button><br>
 			<button type="button" class="btn btn-secondary" style="color:white" onclick="backtomain()">메인으로</button><br>
 			

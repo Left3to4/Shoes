@@ -18,7 +18,7 @@ public class DaoSighup {
 		public DaoSighup() {
 			try {
 				Context context = new InitialContext();
-				dataSource = (DataSource) context.lookup("java:comp/env/jdbc/shoespj");
+				dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mvc");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}

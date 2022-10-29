@@ -20,5 +20,8 @@ public class SCustomerDetailCommand implements SCustomerCommand {
 		request.setAttribute("list", dtos);
 		
 	}
-
+	public boolean execute2(HttpServletRequest request, HttpServletResponse response) {
+		return false;
+	}
+	
 }
