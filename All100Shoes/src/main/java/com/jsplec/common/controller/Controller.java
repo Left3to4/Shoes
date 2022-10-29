@@ -8,13 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.command.SCustomerCartCommand;
 import com.jsplec.customer.command.SCustomerCartListCommand;
 import com.jsplec.customer.command.SCustomerCartListDeleteCommand;
 import com.jsplec.customer.command.SCustomerCommand;
 import com.jsplec.customer.command.SCustomerDetailCommand;
+import com.jsplec.customer.command.SCustomerIdCheckCommand;
+import com.jsplec.customer.command.SCustomerLoginCommand;
 import com.jsplec.customer.command.SCustomerProductClickCommand;
+import com.jsplec.customer.command.SCustomerProductListCommand;
 import com.jsplec.manager.command.SManagerAddCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerIdCheckCommand;
@@ -56,7 +60,7 @@ public class Controller extends HttpServlet {
 
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
+		HttpSession session = null;
 		String viewPage = null;
 		SManagerCommand managercommand = null;
 		SCustomerCommand customercommand = null;
@@ -111,8 +115,32 @@ public class Controller extends HttpServlet {
 			viewPage = "managerUserList.jsp";
 			break;
 //			-------------- 오수 --------------------------
+		case("/Customer/customerProductList.do"):
+			customercommand = new SCustomerProductListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerProductList.jsp";
+			break;
 			
 //			-------------- 태권 --------------------------
+		case("/Customer/login.do"):
+			customercommand = new SCustomerLoginCommand();
+			boolean check1 = customercommand.execute2(request, response);
+			
+			if (check1 == false) {
+				request.setAttribute("CHECK1", check1);
+				viewPage = "login.jsp";
+			} else {
+				viewPage = "main.jsp";
+			}
+			break;
+			
+		case("/Customer/idcheck.do"):
+			customercommand=new SCustomerIdCheckCommand();
+			customercommand.execute(request, response);
+	         
+	         viewPage="customerSighup.jsp";
+	         break;
+			
 			
 //			-------------- 한별 --------------------------
 		
@@ -139,6 +167,7 @@ public class Controller extends HttpServlet {
 		
 		// 장바구니 리스트 출력
 		case("/Customer/customerCartPage.do"):
+			System.out.println("1");
 			customercommand = new SCustomerCartListCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerCartPage.jsp";

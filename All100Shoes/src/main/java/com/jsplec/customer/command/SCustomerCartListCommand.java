@@ -14,8 +14,8 @@ public class SCustomerCartListCommand implements SCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		SCustomerCartListDao dao = new SCustomerCartListDao();
-		
-		ArrayList<SCustomerCartListDto> dtos = dao.cartList();
+		System.out.println("2");
+		ArrayList<SCustomerCartListDto> dtos = dao.cartList(request);
 		request.setAttribute("list", dtos);
 	}
 

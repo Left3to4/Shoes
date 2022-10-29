@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.jsplec.customer.dto.SCustomerCartListDto;
@@ -25,22 +27,23 @@ public class SCustomerCartListDao {
 		}
 	}
 	
-	public ArrayList<SCustomerCartListDto> cartList() {
+	public ArrayList<SCustomerCartListDto> cartList(HttpServletRequest request) {
 		
 		ArrayList<SCustomerCartListDto> dtos = new ArrayList<SCustomerCartListDto>();
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet rs = null;
-		
+		HttpSession session = request.getSession();
 		
 		try {
 			connection = dataSource.getConnection();
 			
 			String query1 = "select o.orderid, p.productid, p.productmodel, p.productprice, p.productcategory, p.productsize, o.orderquantity ";
-			String query2 = "from product p, orders o where o.customerid = 'onestar' and o.orderstatus = '장바구니' and p.productid = o.shoesid";
+			String query2 = "from product p, orders o where o.customerid = '" + session.getAttribute("CUSTOMERID") + "' and o.orderstatus = '장바구니' and p.productid = o.shoesid";
 			
 			preparedStatement = connection.prepareStatement(query1 + query2);
+			
 			rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {

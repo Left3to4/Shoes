@@ -17,7 +17,7 @@ crossorigin="anonymous">
 
 	<%@include file="header.jsp"%>
 	<br>
-	<h1 style = "left: 40px">장바구니</h1>
+	<h1 style = "margin-left: 100px;">장바구니</h1>
 	<br>
 	
 	<div class="container text-center">

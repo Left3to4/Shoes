@@ -23,20 +23,20 @@ public class SCustomerCartDao {
 	}
 
 	public void cartInsert(int shoesid, int ordersaleprice, int orderquantity) {
-		System.out.println(shoesid);
-		System.out.println(ordersaleprice);
-		System.out.println(orderquantity);
+		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "insert into orders (customerid, shoesid, orderquantity, ordersaleprice, orderstatus) values ('onestar', ?, ?, ?, '장바구니')";
+			String query = "insert into orders (customerid, shoesid, orderquantity, ordersaleprice, orderstatus) values (?, ?, ?, ?, '장바구니')";
 			preparedStatement = connection.prepareStatement(query);
 			
-			preparedStatement.setInt(1, shoesid);
-			preparedStatement.setInt(2, orderquantity);
-			preparedStatement.setInt(3, ordersaleprice);
+			System.out.println(session.getAttribute("CUSTOMERID"));
+			preparedStatement.setString(1, (String)session.getAttribute("CUSTOMERID"));
+			preparedStatement.setInt(2, shoesid);
+			preparedStatement.setInt(3, orderquantity);
+			preparedStatement.setInt(4, ordersaleprice);
 
 			preparedStatement.executeUpdate();
 			
