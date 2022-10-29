@@ -145,7 +145,7 @@
 			<c:forEach items="${productList}" var="dto">
 				<div class="col">
 					<div class="card" style="width: 14rem;">
-					<a href="productClick.do?productmodel=${dto.productmodel}">
+					<a href="productDetail.do?productmodel=${dto.productmodel}">
 						<img src="./productListImage/practice.png" class="card-img-top"
 							alt="..." value="${dto.productmodel}">
 					</a>
