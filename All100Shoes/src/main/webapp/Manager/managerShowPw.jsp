@@ -12,7 +12,7 @@
 비밀번호를 찾을 수 없습니다.
 </c:if>
 <c:if test="${MANAGERPW!=null }">
-비밀번호는 ${MANAGERID }입니다.
+비밀번호는 ${MANAGERPW }입니다.
 </c:if>
 </body>
 </html>
