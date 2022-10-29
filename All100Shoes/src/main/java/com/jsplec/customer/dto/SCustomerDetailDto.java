@@ -16,17 +16,17 @@ public class SCustomerDetailDto {
 	
 
 
-//	productDetail2
+	public SCustomerDetailDto(int productid) {
+		super();
+		this.productid = productid;
+	}
+
+	//	productDetail2
 	public SCustomerDetailDto(String productsize, int productstock) {
 		super();
 		this.productsize = productsize;
 		this.productstock = productstock;
 	}
-
-
-
-
-
 
 	public SCustomerDetailDto(int productid, int productprice, String productmodel) {
 		super();

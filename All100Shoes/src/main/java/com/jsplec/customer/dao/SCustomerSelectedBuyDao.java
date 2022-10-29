@@ -30,7 +30,7 @@ public class SCustomerSelectedBuyDao {
 			
 			for(int i = 0; i < orderid.length; i++) {
 				
-				String query = "update orders set orderstatus = '구매' where orderid = ?";
+				String query = "update orders set orderstatus = '구매', orderdate = now() where orderid = ?";
 				preparedStatement = connection.prepareStatement(query);
 				
 				preparedStatement.setString(1, orderid[i]);

@@ -40,7 +40,7 @@ public class SCustomerCartListDao {
 			connection = dataSource.getConnection();
 			
 			String query1 = "select o.orderid, p.productid, p.productmodel, p.productprice, p.productcategory, p.productsize, o.orderquantity ";
-			String query2 = "from product p, orders o where o.customerid = '" + session.getAttribute("CUSTOMERID") + "' and o.orderstatus = '장바구니' and p.productid = o.shoesid";
+			String query2 = "from product p, orders o where o.customerid = '" + session.getAttribute("CUSTOMERID") + "' and o.orderstatus = '장바구니' and p.productid = o.productid";
 			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			
@@ -87,7 +87,6 @@ public class SCustomerCartListDao {
 			connection = dataSource.getConnection();
 			
 			String query1 = "select count(*), sum(ordersaleprice) from orders where orderstatus = '장바구니' and customerid = '" + session.getAttribute("CUSTOMERID") + "'";
-			System.out.println("session : " + session.getAttribute("CUSTOMERID"));
 			preparedStatement = connection.prepareStatement(query1);
 			
 			rs = preparedStatement.executeQuery();

@@ -23,6 +23,8 @@ import com.jsplec.customer.command.SCustomerSelectedBuyCommand;
 import com.jsplec.manager.command.MMypageShowInfoCommand;
 import com.jsplec.manager.command.SManagerAddCommand;
 import com.jsplec.manager.command.SManagerCommand;
+import com.jsplec.manager.command.SManagerFindIdCommand;
+import com.jsplec.manager.command.SManagerFindPwCommand;
 import com.jsplec.manager.command.SManagerIdCheckCommand;
 import com.jsplec.manager.command.SManagerLoginCommand;
 import com.jsplec.manager.command.SManagerMypageDeleteCommand;
@@ -114,6 +116,18 @@ public class Controller extends HttpServlet {
 	    	   managercommand=new MMypageShowInfoCommand();
 	    	   managercommand.execute(request, response);
 	    	   viewPage="managerMypage.jsp";
+	    	   break;
+	    	   
+	      case("/Manager/managerfindid.do"):
+	    	   managercommand=new SManagerFindIdCommand();
+	    	   managercommand.execute(request, response);
+	    	   viewPage="managerShowId.jsp";
+	    	   break;
+
+	    	case("/Manager/managerfindpw.do"):
+	    	   managercommand=new SManagerFindPwCommand();
+	    	   managercommand.execute(request, response);
+	    	   viewPage="managerShowPw.jsp";
 	    	   break;
 	         
 //			-------------- 예진 --------------------------

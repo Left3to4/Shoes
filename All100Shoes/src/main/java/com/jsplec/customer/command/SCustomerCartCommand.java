@@ -1,10 +1,13 @@
 package com.jsplec.customer.command;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jsplec.customer.dao.SCustomerCartDao;
+import com.jsplec.customer.dto.SCustomerDetailDto;
 
 public class SCustomerCartCommand implements SCustomerCommand {
 
@@ -17,12 +20,21 @@ public class SCustomerCartCommand implements SCustomerCommand {
 		int productprice = Integer.parseInt(request.getParameter("productprice"));
 		int productstock = Integer.parseInt(request.getParameter("productstock"));
 		
+		int index = 0;
+		
 		session.setAttribute("CUSTOMERID", "onestar");
 		
 		SCustomerCartDao dao = new SCustomerCartDao();
-
-		dao.selectProduct();
 		dao.cartInsert(productid, productprice, productstock);
+
+		ArrayList<SCustomerDetailDto> dtos = dao.selectProduct();
+		for(int i = 0; i < dtos.size(); i++) {
+			if(productid == dtos.get(i).getProductid()) {
+				index++;
+			} else {
+				
+			}
+		}
 		
 	}
 
