@@ -19,7 +19,7 @@ function check(){
 <body>
 <h2>회원가입</h2>
 <form name="manageradd" action="manageradd.do" method="post">
-ID: <input type="text" name="managerid">
+ID: <input type="text" name="managerid" value="${CHECKID }">
 <input type="button" name="idcheck" onclick="check()" value="중복체크">
 <c:if test="${CHECK==true }">사용할 수 없는 ID입니다.</c:if>
 <c:if test="${CHECK==false }">사용 가능한 ID입니다.</c:if>

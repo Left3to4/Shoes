@@ -101,7 +101,7 @@ public class MAddDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "insert into manager (managerid, managerpw, managername, managerphone, managerinitdate values (?, ?, ?, ?, now())";
+			String query = "insert into manager (managerid, managerpw, managername, managerphone, managerinitdate) values (?, ?, ?, ?, now())";
 			ps = connection.prepareStatement(query);
 			ps.setString(1, managerid);
 			ps.setString(2, managerpw);

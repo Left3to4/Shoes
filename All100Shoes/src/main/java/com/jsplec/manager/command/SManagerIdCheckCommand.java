@@ -10,17 +10,18 @@ public class SManagerIdCheckCommand implements SManagerCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-
+		String managerid=request.getParameter("managerid");
+		MAddDao dao=new MAddDao();
+		boolean check=dao.idCheck(managerid);
+		
+		request.setAttribute("CHECK", check);
+		request.setAttribute("CHECKID", managerid);
 	}
 
 	@Override
 	public boolean execute2(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String managerid=request.getParameter("managerid");
-		MAddDao dao=new MAddDao();
-		boolean check=dao.idCheck(managerid);
-		
-		return check;
+		return false;
 	}
 
 }
