@@ -57,7 +57,7 @@
 			</tr>
 		</thead>
 		
-		<c:forEach items = "${HISTORYLIST }}" var = "dto">
+		<c:forEach items = "${HISTORYLIST}" var = "dto">
 				<tr>
 					<td>${dto.buyid}</td>
 					<td>${dto.productmodel}</td>
