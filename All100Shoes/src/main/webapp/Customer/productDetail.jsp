@@ -6,6 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type="text/javascript">
+function selectFx() {
+	var opt = document.getElementById("textOption");
+	location.href = 'Customer/productDetailStock.do';
+}
+
+</script>
+
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <body>
@@ -35,11 +44,11 @@
 	    <table>
 	    
 	    	<tr style = " position: relative;  left: 1000px; bottom: 300px">
-	    		<td>${list.productmodel[0]}</td>
+	    		<td></td>
 	    	</tr>
 	    
 	    	<tr style = " position: relative;  left: 1000px; bottom: 200px">
-	    		<td>${list.productprice[0] }</td>
+	    		<td></td>
 	    	</tr>
 	    
 	    </table>
@@ -63,38 +72,32 @@
 	  </div>
 	  
 	   
-	    <table>
-	    
-	    	<tr style = " position: relative;  left: 700px; bottom: 400px">
-	    		<td>
-	    			내용ㅏㄹ디ㅏ저라ㅣ어랴너랴널야너ㅐ링나ㅓ라인렁나ㅣ어낭너;밀언마ㅣㄹㅇ너ㅣㄹ아널;
-	    			니ㅏㅓㄹㅇ니ㅏ러나ㅣㄹ어니ㅏㄹ언ㅇ나ㅣ리ㅏㅇ널이나ㅓㄹ니ㅏㅓㄴ러ㅣ널이나ㅓㄹㅇ니
-	    			렁니렁ㄴ;ㅏㅣ렁ㄴ;미ㅏ렁니ㅏ렁니ㅏㄹ어나ㅣ렁니ㅏ렁니ㅏㅓ리아널ㅇㄴㄴ아ㅣ렁니ㅏ렁니ㅏ러
-	    			ㅣㅏㄴ어리ㅏ너라ㅣㅇ너라ㅣ널이널언런렁니ㅓ라ㅣ널이ㅏ너라너ㅣ;ㄹ너리ㅏ머리;ㅁㅇ널;ㅣㅇ널
-	    			;ㅣㄴ어리안ㅁ러ㅣㅇ나ㅓㄹ이ㅏㄴ러댜ㅐㅈㅇ너리ㅏㄹ니;어랴ㅐㄷ정너라ㅣㄷ너리ㅏㄷㄴ어ㅣ런ㅇ
-	    			런ㅇ;렁ㄴ렁ㄴ;렁니ㅏ러이나ㅓㄹ이ㅑ;널;ㅑㅐㄴ어래야너랭널ㅇ니ㅏㄹㅇ니렁니ㅏ렁ㄴ미ㅑ;런야ㅣ러	
-    			</td>
-	    	</tr>
-	    
-	    <c:forEach items = "${list}" var = "dto">
-	   		 <tr style = " position: relative;  left: 700px; bottom: 320px;">
-				<td>
-					 <select style = "width:500px;height:32px;">
-						<option>${dto.productsize }</option>
-					</select>
-				</td>
-			</tr>
-	    </c:forEach>
-	    
-	    <c:forEach items = "${list}" var = "dto">
-	   		 <tr style = " position: relative;  left: 700px; bottom: 320px;">
-				<td>
-					 <select style="width:500px;height:32px;">
-						<option>${dto.productstock }</option>
-					</select>
-				</td>
-			</tr>
-	    </c:forEach>
+    <table>
+    
+    	<tr style = " position: relative;  left: 700px; bottom: 400px">
+    		<td>
+    		
+   			</td>
+    	</tr>
+   		 <tr style = " position: relative;  left: 700px; bottom: 320px;">
+			<td>
+				 <select style = "width: 500px; height: 32px;" id = "textOption" onchange = "selectFx()">
+				    <c:forEach items = "${list}" var = "dto">
+						<option value = "${dto.productsize }">${dto.productsize }</option>
+				    </c:forEach>
+				</select>
+			</td>
+		</tr>
+
+   		 <tr style = " position: relative;  left: 700px; bottom: 320px;">
+			<td>
+				 <select style="width:500px;height:32px;">
+				    <c:forEach var = "dto" items = "${list }">
+						<option value = "${dto.productstock}">${dto.productstock}</option>
+				    </c:forEach>
+				</select>
+			</td>
+		</tr>
 
 			<tr style = " position: relative;  left: 700px; bottom: 300px;">
 				<td>

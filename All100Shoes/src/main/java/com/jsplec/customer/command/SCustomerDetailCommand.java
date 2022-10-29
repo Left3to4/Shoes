@@ -15,7 +15,6 @@ public class SCustomerDetailCommand implements SCustomerCommand {
 
 		SCustomerDetailDao dao = new SCustomerDetailDao();
 		String productmodel = dao.productDetail();
-		
 		ArrayList<SCustomerDetailDto> dtos = dao.productDetail2(productmodel);
 		
 		request.setAttribute("list", dtos);

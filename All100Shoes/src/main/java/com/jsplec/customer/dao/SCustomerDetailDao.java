@@ -73,21 +73,18 @@ public class SCustomerDetailDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select productid, productmodel, productprice, productsize, productstock from product where productmodel = '" + productname + "'";
+			String query = "select productsize, productstock from product where productmodel = '" + productname + "'";
 			
 			preparedStatement = connection.prepareStatement(query);
 			rs = preparedStatement.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 
-				int productid = rs.getInt(1);
-				String productmodel = rs.getString(2);
-				int productprice = rs.getInt(3);
-				String productsize = rs.getNString(4);
-				int productstock = rs.getInt(5);
+				String productsize = rs.getString(1);
+				int productstock = rs.getInt(2);
 				
 				
-				SCustomerDetailDto dto = new SCustomerDetailDto(productid, productmodel, productprice, productsize, productstock);
+				SCustomerDetailDto dto = new SCustomerDetailDto(productsize, productstock);
 				dtos.add(dto);
 			}
 			
@@ -103,7 +100,7 @@ public class SCustomerDetailDao {
 			}
 		}
 		return dtos;
-	} // productDetail() --
+	} // productDetail2() --
 	
 	
 	

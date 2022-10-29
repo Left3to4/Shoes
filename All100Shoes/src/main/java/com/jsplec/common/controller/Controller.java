@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.customer.command.SCustomerCommand;
 import com.jsplec.customer.command.SCustomerDetailCommand;
-import com.jsplec.customer.command.SCustomerSighupCommand;
+import com.jsplec.manager.command.SManagerAddCommand;
 import com.jsplec.manager.command.SManagerCommand;
+import com.jsplec.manager.command.SManagerIdCheckCommand;
 import com.jsplec.manager.command.SManagerLoginCommand;
+import com.jsplec.manager.command.SManagerMypageDeleteCommand;
+import com.jsplec.manager.command.SManagerMypageUpdateCommand;
 import com.jsplec.manager.command.SManagerUserListCommand;
 
 
@@ -72,7 +75,31 @@ public class Controller extends HttpServlet {
 				viewPage = "managerMain.jsp";
 			}
 			break;
-			
+		case("/Manager/idcheck.do"):
+	         managercommand=new SManagerIdCheckCommand();
+	         managercommand.execute(request, response);
+	         
+	         viewPage="managerAdd.jsp";
+	         break;
+	         
+	      case("/Manager.delete.do"):
+	         managercommand=new SManagerMypageDeleteCommand();
+	         managercommand.execute(request, response);
+	         viewPage="managerMain.jsp";
+	         break;
+	         
+	      case("/Manager.update.do"):
+	         managercommand=new SManagerMypageUpdateCommand();
+	         managercommand.execute(request, response);
+	         viewPage="managerMain.jsp";
+	         break;
+	      
+	      case("/Manager/manageradd.do"):
+	         managercommand=new SManagerAddCommand();
+	         managercommand.execute(request, response);
+	         viewPage="managerlogin.jsp";
+	         break;
+	         
 //			-------------- 예진 --------------------------
 		case("/Manager/userlist.do"):
 			managercommand = new SManagerUserListCommand();
@@ -84,11 +111,16 @@ public class Controller extends HttpServlet {
 //			-------------- 태권 --------------------------
 			
 //			-------------- 한별 --------------------------
-		case("/Customer/productDetail.do"):
+		case("/Customer/productDetailSize.do"):
 			customercommand = new SCustomerDetailCommand();
 			customercommand.execute(request, response);
 			viewPage = "productDetail.jsp";
 			break;
+
+		case("/Customer/productDetailStock.do"):
+			System.out.println("넘어옴");
+			break;
+		
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

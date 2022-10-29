@@ -17,12 +17,8 @@ public class SCustomerDetailDto {
 
 
 //	productDetail2
-	public SCustomerDetailDto(int productid, String productmodel, int productprice, String productsize,
-			int productstock) {
+	public SCustomerDetailDto(String productsize, int productstock) {
 		super();
-		this.productid = productid;
-		this.productmodel = productmodel;
-		this.productprice = productprice;
 		this.productsize = productsize;
 		this.productstock = productstock;
 	}
@@ -53,7 +49,7 @@ public class SCustomerDetailDto {
 	}
 
 	public void setProductstock(int productstock) {
-		this.productstock = productstock;
+		this.productstock = productstock; 
 	}
 
 	public String getProductmodel() {
