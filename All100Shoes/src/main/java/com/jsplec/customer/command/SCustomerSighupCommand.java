@@ -19,6 +19,7 @@ public class SCustomerSighupCommand implements SCustomerCommand {
 		
 		DaoSighup dao = new DaoSighup();
 		dao.sighup(customerid, customerpw, customername, customerphone, customeraddress);
+	
 		
 	}
 	public boolean execute2(HttpServletRequest request, HttpServletResponse response) {
