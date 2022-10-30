@@ -15,17 +15,24 @@
 	}
 	
 	function cartInsert(){
-		var form=document.detail;
+		var form = document.detail;
 		form.action = "productCart.do";
 		form.submit();
 	}
-	
-	function stockUp(){
-		var form=document.detail;
-		form.action = "delete.do";
-		form.submit();
-	}
 
+	function fnCalCount(type, ths){
+	    var $input = $(ths).parents("td").find("input[name='pop_out']");
+	    var tCount = Number($input.val());
+	    var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
+	    
+	    if(type=='p'){
+	        if(tCount < tEqCount) $input.val(Number(tCount)+1);
+	        
+	    }else{
+	        if(tCount >0) $input.val(Number(tCount)-1);    
+	        }
+	}
+	
 </script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -91,9 +98,13 @@
 
    		 <tr style = " position: relative;  left: 810px; bottom: 320px;">
 			<td>
-				 <input type = "text" name = "productstock" value = "1">
-				 <button type = "button" onclick = "stockUp()">up</button>
-				 <button type = "button">down</button>
+		        <input type = text name = productStock value=0>
+		        <input type = button value = "증가" onClick = "fnCalCount('p',this);">
+		        <input type = button value = "감소" onClick = "javascript:this.form.productStock.value--;">
+		        
+		        <button type ="button" onclick="fnCalCount('p',this);">+</button>
+		        <input type="text" name="pop_out" value="0" readonly="readonly" style="text-align:center;"/>
+		        <button type="button" onclick="fnCalCount('m', this);">-</button>
 			</td>
 		</tr>
 
@@ -102,6 +113,7 @@
 				<button type = "button" class="btn btn-dark me-2" style = "width: 100px; HEIGHT: 80pt" onclick="cartInsert()">CART</button>
 			</td>
 		</tr>
+		
     </table>
   </form>
   

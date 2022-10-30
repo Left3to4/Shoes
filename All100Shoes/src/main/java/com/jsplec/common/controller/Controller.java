@@ -29,6 +29,9 @@ import com.jsplec.manager.command.SManagerFindIdCommand;
 import com.jsplec.manager.command.SManagerFindPwCommand;
 import com.jsplec.manager.command.SManagerIdCheckCommand;
 import com.jsplec.manager.command.SManagerLoginCommand;
+import com.jsplec.manager.command.SManagerMainOrdersTodayCommand;
+import com.jsplec.manager.command.SManagerMainSalesTodayCommand;
+import com.jsplec.manager.command.SManagerMainSignTodayCommand;
 import com.jsplec.manager.command.SManagerMypageDeleteCommand;
 import com.jsplec.manager.command.SManagerMypageUpdateCommand;
 import com.jsplec.manager.command.SManagerUserListCommand;
@@ -69,6 +72,8 @@ public class Controller extends HttpServlet {
 		HttpSession session = null;
 		String viewPage = null;
 		SManagerCommand managercommand = null;
+		SManagerCommand managercommand1 = null;
+		SManagerCommand managercommand2 = null;
 		SCustomerCommand customercommand = null;
 		
 		String uri = request.getRequestURI();
@@ -133,10 +138,14 @@ public class Controller extends HttpServlet {
 	    	   break;
 	         
 //			-------------- 예진 --------------------------
-		case("/Manager/userlist.do"):
-			managercommand = new SManagerUserListCommand();
+    	case("/Manager/managermain.do"):
+			managercommand = new SManagerMainSignTodayCommand();
 			managercommand.execute(request, response);
-			viewPage = "managerUserList.jsp";
+			managercommand1 = new SManagerMainOrdersTodayCommand();
+			managercommand1.execute(request, response);
+			managercommand2 = new SManagerMainSalesTodayCommand();
+			managercommand2.execute(request, response);
+			viewPage = "managerMain.jsp";
 			break;
 //			-------------- 오수 --------------------------
 		case("/Customer/customerProductList.do"):
@@ -161,9 +170,20 @@ public class Controller extends HttpServlet {
 		case("/Customer/idcheck.do"):
 			customercommand=new SCustomerIdCheckCommand();
 			customercommand.execute(request, response);
+	        viewPage="customerSighup.jsp";
+	        break;
+	        
+		case("/Customer/customerfindid.do"):
+			customercommand = new SCustomerFindid();
+			customercommand.execute(request, response);
+			viewPage = "customerFindid.jsp";
+			break;
 			
-	         viewPage="customerSighup.jsp";
-	         break;
+		case("/Customer/findpw.do"):
+			customercommand = new SCustomerFindpw();
+			customercommand.execute(request, response);
+			viewPage = "customerFindpw.jsp";
+			break;
 //			-------------- 한별 --------------------------
 		
         // 상품 상세정보 리스트
