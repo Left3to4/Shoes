@@ -9,28 +9,16 @@
 
 <script type="text/javascript">
 
-	function selectFx() {
-		var opt = document.getElementById("textOption");
-		form.submit();
-	}
-	
 	function cartInsert(){
 		var form = document.detail;
 		form.action = "productCart.do";
 		form.submit();
 	}
 
-	function fnCalCount(type, ths){
-	    var $input = $(ths).parents("td").find("input[name='pop_out']");
-	    var tCount = Number($input.val());
-	    var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
-	    
-	    if(type=='p'){
-	        if(tCount < tEqCount) $input.val(Number(tCount)+1);
-	        
-	    }else{
-	        if(tCount >0) $input.val(Number(tCount)-1);    
-	        }
+	function stock(type) {
+		var form = document.detail;
+		form.action = 'productStockCount.do';
+    	form.submit();
 	}
 	
 </script>
@@ -43,7 +31,8 @@
 
 <main>
 	
-	<form action="customerCartPage.do" name = "detail" method = "post">
+	<form action="#" name = "detail" method = "post">
+	
 	  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
 	  
 	    <div class="card" style="width: 18rem; height: 18rem">
@@ -98,13 +87,9 @@
 
    		 <tr style = " position: relative;  left: 810px; bottom: 320px;">
 			<td>
-		        <input type = text name = productStock value=0>
-		        <input type = button value = "증가" onClick = "fnCalCount('p',this);">
-		        <input type = button value = "감소" onClick = "javascript:this.form.productStock.value--;">
-		        
-		        <button type ="button" onclick="fnCalCount('p',this);">+</button>
-		        <input type="text" name="pop_out" value="0" readonly="readonly" style="text-align:center;"/>
-		        <button type="button" onclick="fnCalCount('m', this);">-</button>
+		        <input type = text name = "productstock" value = "0">
+		        <input type = button value = "증가" onClick = "stock('+');">
+		        <input type = button value = "감소" onClick = "stock('-');">
 			</td>
 		</tr>
 

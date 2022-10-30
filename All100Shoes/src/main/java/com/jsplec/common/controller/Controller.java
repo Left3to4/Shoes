@@ -27,6 +27,7 @@ import com.jsplec.manager.command.SManagerAddCommand;
 import com.jsplec.manager.command.SManagerCommand;
 import com.jsplec.manager.command.SManagerFindIdCommand;
 import com.jsplec.manager.command.SManagerFindPwCommand;
+import com.jsplec.manager.command.SManagerHistoryCommand;
 import com.jsplec.manager.command.SManagerIdCheckCommand;
 import com.jsplec.manager.command.SManagerLoginCommand;
 import com.jsplec.manager.command.SManagerMainOrdersTodayCommand;
@@ -34,6 +35,8 @@ import com.jsplec.manager.command.SManagerMainSalesTodayCommand;
 import com.jsplec.manager.command.SManagerMainSignTodayCommand;
 import com.jsplec.manager.command.SManagerMypageDeleteCommand;
 import com.jsplec.manager.command.SManagerMypageUpdateCommand;
+import com.jsplec.manager.command.SManagerProductListCommand;
+import com.jsplec.manager.command.SManagerSalesListCommand;
 import com.jsplec.manager.command.SManagerUserListCommand;
 
 
@@ -184,6 +187,31 @@ public class Controller extends HttpServlet {
 			customercommand.execute(request, response);
 			viewPage = "customerFindpw.jsp";
 			break;
+			
+		case("/Manager/uselist.do"):
+			managercommand = new SManagerUserListCommand();
+			managercommand.execute(request, response);
+			viewPage = "managerUserList.jsp";
+			break;
+			
+    	case("/Manager/productlist.do"):
+    		managercommand = new SManagerProductListCommand();
+	    	managercommand.execute(request, response);
+	    	viewPage = "managerProductList.jsp";
+	    	break;
+    	
+    	case("/Manager/sales.do"):
+    		managercommand = new SManagerSalesListCommand();
+	    	managercommand.execute(request, response);
+	    	viewPage = "managerSales.jsp";
+	    	break;
+	    	
+    	case("/Manager/history.do"):
+    		managercommand = new SManagerHistoryCommand();
+	    	managercommand.execute(request, response);
+	    	viewPage = "managerHistory.jsp";
+	    	break;
+			
 //			-------------- 한별 --------------------------
 		
         // 상품 상세정보 리스트
@@ -231,6 +259,13 @@ public class Controller extends HttpServlet {
 		// 장바구니 선택 상품 삭제하기
 		case("/Customer/selectedProductDelete.do"):
 			customercommand = new SCustomerCartListDeleteCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerCartPage.do";
+			break;
+			
+		// 장바구니 선택 상품 삭제하기
+		case("/Customer/productStockCount.do"):
+			customercommand = new SCustomerDetailCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerCartPage.do";
 			break;
