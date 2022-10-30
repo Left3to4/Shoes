@@ -153,6 +153,5 @@ $RECYCLE.BIN/
 *.lnk
 
 Servers/
-.classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,macos,windows,java
