@@ -20,6 +20,7 @@ import com.jsplec.customer.command.SCustomerFindpw;
 import com.jsplec.customer.command.SCustomerIdCheckCommand;
 import com.jsplec.customer.command.SCustomerLoginCommand;
 import com.jsplec.customer.command.SCustomerProductClickCommand;
+import com.jsplec.customer.command.SCustomerProductListCategoryCommand;
 import com.jsplec.customer.command.SCustomerProductListCommand;
 import com.jsplec.customer.command.SCustomerSelectedBuyCommand;
 import com.jsplec.manager.command.MMypageShowInfoCommand;
@@ -153,6 +154,12 @@ public class Controller extends HttpServlet {
 //			-------------- 오수 --------------------------
 		case("/Customer/customerProductList.do"):
 			customercommand = new SCustomerProductListCommand();
+			customercommand.execute(request, response);
+			viewPage = "customerProductList.jsp";
+			break;
+			
+		case("/Customer/customerProductListCategory.do"):
+			customercommand = new SCustomerProductListCategoryCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerProductList.jsp";
 			break;

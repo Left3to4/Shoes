@@ -106,17 +106,17 @@ public class SCustomerDetailDao {
 	
 	
 
-	public int productStockCount() {
+	public int productStockCount(String productmodel, int productsize) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet rs = null;
-		int dto = 0;
+		int count = 0;
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select productid, productmodel, productprice from product where productmodel = '"  + "'";
+			String query = "select from product where productsize = " + productsize;
 			
 			preparedStatement = connection.prepareStatement(query);
 			rs = preparedStatement.executeQuery();
@@ -141,7 +141,7 @@ public class SCustomerDetailDao {
 				e.printStackTrace();
 			}
 		}
-		return dto;
+		return count;
 	} // productDetailModel() --
 	
 	
