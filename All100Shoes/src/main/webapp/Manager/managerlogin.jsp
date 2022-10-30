@@ -28,6 +28,18 @@ function findid(){
 	form.action="managerFindId.jsp";
 	form.submit();
 }
+
+function findpw(){
+	var form=document.login;
+	form.action="managerFindPw.jsp";
+	form.submit();
+}
+
+function makeaccount(){
+	var form=document.login;
+	form.action="managerAdd.jsp";
+	form.submit();
+}
 </script>
 
 
