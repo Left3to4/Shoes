@@ -95,7 +95,7 @@ public class Controller extends HttpServlet {
 				request.setAttribute("CHECK", check);
 				viewPage = "managerlogin.jsp";
 			} else {
-				viewPage = "managerMain.do";
+				viewPage = "managermain.do";
 			}
 			break;
 		case("/Manager/idcheck.do"):
@@ -108,13 +108,13 @@ public class Controller extends HttpServlet {
 	      case("/Manager.delete.do"):
 	         managercommand=new SManagerMypageDeleteCommand();
 	         managercommand.execute(request, response);
-	         viewPage="managerMain.do";
+	         viewPage="managermain.do";
 	         break;
 	         
 	      case("/Manager.update.do"):
 	         managercommand=new SManagerMypageUpdateCommand();
 	         managercommand.execute(request, response);
-	         viewPage="managerMain.do";
+	         viewPage="managermain.do";
 	         break;
 	      
 	      case("/Manager/manageradd.do"):
@@ -149,7 +149,7 @@ public class Controller extends HttpServlet {
 			managercommand1.execute(request, response);
 			managercommand2 = new SManagerMainSalesTodayCommand();
 			managercommand2.execute(request, response);
-			viewPage = "managerMain.do";
+			viewPage = "managermain.do";
 			break;
 			
     	case("/Manager/userlist.do"):
