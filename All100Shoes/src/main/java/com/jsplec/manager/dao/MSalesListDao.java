@@ -1,6 +1,7 @@
 package com.jsplec.manager.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -39,8 +40,8 @@ public class MSalesListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select sum(ordersaleprice), orderdate from orders where orderstatus = '구매' ";
-			String query1 = "group by orderdate";
+			String query = "select sum(ordersaleprice), date_format(orderdate, '%Y-%m-%d') as orderdate from orders where orderstatus = '구매' ";
+			String query1 = "group by orderdate order by orderdate desc";
 			preparedStatement = connection.prepareStatement(query+query1);
 			resultSet = preparedStatement.executeQuery();
 			int i = 0;
@@ -49,7 +50,7 @@ public class MSalesListDao {
 				i += 1;
 				int seq = i;
 				int sales = resultSet.getInt("sum(ordersaleprice)");
-				Timestamp orderdate = resultSet.getTimestamp("orderdate");
+				Date orderdate = resultSet.getDate("orderdate");
 				
 				MSalesDto dto = new MSalesDto(seq, sales, orderdate);
 						

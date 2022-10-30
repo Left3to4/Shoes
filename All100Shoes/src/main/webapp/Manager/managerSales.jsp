@@ -28,7 +28,7 @@
 			</div>
 				
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="align-items: center">
-			<form action= "userlist.do" class="d-flex" role="search">
+			<form action= "sales.do" class="d-flex" role="search">
 				<select name = "customer">
 					<option value = "date">날짜</option>
 				</select>&nbsp;&nbsp;&nbsp;
@@ -53,9 +53,8 @@
 		
 		<c:forEach items = "${SALESLIST}" var = "dto">
 				<tr>
-					<td>${dto.seq}</td>
-					<td>${dto.sales}</td>
 					<td>${dto.orderdate}</td>
+					<td>${dto.sales}</td>
 				</tr>
 		</c:forEach>
 		

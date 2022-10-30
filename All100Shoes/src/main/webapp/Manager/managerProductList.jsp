@@ -61,7 +61,7 @@
 		
 		<c:forEach items = "${PRODUCTLIST}" var = "dto">
 				<tr>
-					<td>${dto.productseq}</td>
+					<td>${dto.productid}</td>
 					<td>${dto.productbrand}</td>
 					<td>${dto.productmodel}</td>
 					<td>${dto.productsize}</td>

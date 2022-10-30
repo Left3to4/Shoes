@@ -3,7 +3,7 @@ package com.jsplec.manager.dto;
 public class MProductDto {
 
 	// F
-	int shoesid;
+	int productid;
 	String productbrand;
 	String productmodel;
 	String productsize;
@@ -16,10 +16,10 @@ public class MProductDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MProductDto(int shoesid, String productbrand, String productmodel, String productsize, int productprice,
+	public MProductDto(int productid, String productbrand, String productmodel, String productsize, int productprice,
 			int productstock, String productstatus) {
 		super();
-		this.shoesid = shoesid;
+		this.productid = productid;
 		this.productbrand = productbrand;
 		this.productmodel = productmodel;
 		this.productsize = productsize;
@@ -29,12 +29,12 @@ public class MProductDto {
 	}
 
 	// M
-	public int getShoesid() {
-		return shoesid;
+	public int getProductid() {
+		return productid;
 	}
 
-	public void setShoesid(int shoesid) {
-		this.shoesid = shoesid;
+	public void setProductid(int productid) {
+		this.productid = productid;
 	}
 
 	public String getProductbrand() {

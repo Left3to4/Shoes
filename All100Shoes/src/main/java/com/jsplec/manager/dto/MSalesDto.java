@@ -1,5 +1,6 @@
 package com.jsplec.manager.dto;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class MSalesDto {
@@ -7,7 +8,7 @@ public class MSalesDto {
 	// F
 	int seq;
 	int sales;
-	Timestamp orderdate;
+	Date orderdate;
 	
 	
 	// C
@@ -15,7 +16,7 @@ public class MSalesDto {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public MSalesDto(int seq, int sales, Timestamp orderdate) {
+	public MSalesDto(int seq, int sales, Date orderdate) {
 		super();
 		this.seq = seq;
 		this.sales = sales;
@@ -39,11 +40,11 @@ public class MSalesDto {
 		this.sales = sales;
 	}
 
-	public Timestamp getOrderdate() {
+	public Date getOrderdate() {
 		return orderdate;
 	}
 
-	public void setOrderdate(Timestamp orderdate) {
+	public void setOrderdate(Date orderdate) {
 		this.orderdate = orderdate;
 	}
 	
