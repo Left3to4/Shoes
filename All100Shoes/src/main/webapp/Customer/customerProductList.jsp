@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 
@@ -57,6 +57,7 @@
 
 
 <style>
+
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -113,6 +114,7 @@
 
 <!-- Custom styles for this template -->
 <link href="product.css" rel="stylesheet">
+<link href="sidebars.css" rel="stylesheet">
 </head>
 <body>
 
@@ -139,7 +141,7 @@
 		</nav>
 	</header>
 	
-<!-- <form action="customerProductList.do">
+ <form action="customerProductList.do">
 		검색 선택 : 
 			<select name="pbrand">
 				<option value="productmodel" selected="selected">model</option>
@@ -147,7 +149,7 @@
 			</select>&nbsp;&nbsp;&nbsp;
 			<input type="text" name="content" size="30">
 			<input type="submit" value="검색">
-	</form> -->
+	</form> 
 
 	<main>
 	
@@ -172,9 +174,9 @@
       </a>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li value="pcategory"><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">sneakers</a></li>
-            <li><a href="customerProductList.do?productbrand=nike&productcategory=running" class="link-dark d-inline-flex text-decoration-none rounded">running</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">basketball</a></li>
+            <li><a href="customerProductListCategory.do?pbrand=nike&pcategory=sneakers" class="link-dark d-inline-flex text-decoration-none rounded">sneakers</a></li>
+            <li><a href="customerProductListCategory.do?pbrand=nike&pcategory=running" class="link-dark d-inline-flex text-decoration-none rounded">running</a></li>
+            <li><a href="customerProductListCategory.do?pbrand=nike&pcategory=basketball" class="link-dark d-inline-flex text-decoration-none rounded">basketball</a></li>
           </ul>
         </div>
       </li>
@@ -184,9 +186,9 @@
         </button>
         <div class="collapse" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">sneakers</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">running</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">basketball</a></li>
+            <li><a href="customerProductListCategory.do?pbrand=adidas&pcategory=sneakers" class="link-dark d-inline-flex text-decoration-none rounded">sneakers</a></li>
+            <li><a href="customerProductListCategory.do?pbrand=adidas&pcategory=running" class="link-dark d-inline-flex text-decoration-none rounded">running</a></li>
+            <li><a href="customerProductListCategory.do?pbrand=adidas&pcategory=basketball" class="link-dark d-inline-flex text-decoration-none rounded">basketball</a></li>
           </ul>
         </div>
       </li>
@@ -196,6 +198,21 @@
 		<div class="row">
 			
 			<c:forEach items="${productList}" var="dto">
+				<div class="col">
+					<div class="card" style="width: 14rem;">
+					<a href="productDetail.do?productmodel=${dto.productmodel}">
+						<img src="./productListImage/practice.png" class="card-img-top"
+							alt="${dto.productmodel}">
+					</a>
+						<div class="card-body">
+							<p class="card-text" align="center">${dto.productbrand} ${dto.productmodel}</p>
+							<p class="card-text" align="center">${dto.productprice}</p>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			
+			<c:forEach items="${productListCategory}" var="dto">
 				<div class="col">
 					<div class="card" style="width: 14rem;">
 					<a href="productDetail.do?productmodel=${dto.productmodel}">

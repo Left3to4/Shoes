@@ -23,8 +23,8 @@ public class SCustomerProductListCategoryCommand implements SCustomerCommand {
 		}
 
 		SCustomerProductListDao dao = new SCustomerProductListDao();
-		ArrayList<SCustomerProductListDto> dtoss = dao.productList(pbrand, pcategory);
-		request.setAttribute("productList", dtoss);
+		ArrayList<SCustomerProductListDto> dtoss = dao.cProductList(pbrand, pcategory);
+		request.setAttribute("productListCategory", dtoss);
 
 	}
 
