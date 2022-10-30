@@ -31,7 +31,7 @@
 
 <main>
 	
-	<form action="#" name = "detail" method = "post">
+	<form name = "detail" method = "post">
 	
 	  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
 	  
@@ -75,9 +75,9 @@
    			</td>
     	</tr>
     	
-   		 <tr style = " position: relative;  left: 810px; bottom: 320px;">
+   		 <tr style = " position: relative;  left: 790px; bottom: 320px;">
 			<td>
-				 <select style = "width: 280px; height: 32px;" name = "productsize">
+				 <select style = "width: 500px; height: 32px;" name = "productsize">
 				    <c:forEach items = "${list}" var = "dto">
 						<option value = "${dto.productsize }">${dto.productsize }</option>
 				    </c:forEach>
@@ -85,11 +85,13 @@
 			</td>
 		</tr>
 
-   		 <tr style = " position: relative;  left: 810px; bottom: 320px;">
+   		 <tr style = " position: relative;  left: 790px; bottom: 320px;">
 			<td>
-		        <input type = text name = "productstock" value = "0">
-		        <input type = button value = "증가" onClick = "stock('+');">
-		        <input type = button value = "감소" onClick = "stock('-');">
+				<select style = "width: 500px; height: 32px;" name = "productsize">
+				    <c:forEach begin = "1" end = "10" var = "num">
+						<option value = "${num }">${num}</option>
+				    </c:forEach>
+				</select>
 			</td>
 		</tr>
 

@@ -19,10 +19,6 @@ public class SCustomerDetailCommand implements SCustomerCommand {
 		request.setAttribute("productmodel", productmodel);
 		request.setAttribute("detail", dto);
 		
-		int stockCount = Integer.parseInt(request.getParameter("productstock"));
-		
-		dao.productStockCount(stockCount);
-		
 	}
 
 	@Override

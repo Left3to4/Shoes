@@ -95,7 +95,7 @@ public class Controller extends HttpServlet {
 				request.setAttribute("CHECK", check);
 				viewPage = "managerlogin.jsp";
 			} else {
-				viewPage = "managerMain.jsp";
+				viewPage = "managerMain.do";
 			}
 			break;
 		case("/Manager/idcheck.do"):
@@ -108,13 +108,13 @@ public class Controller extends HttpServlet {
 	      case("/Manager.delete.do"):
 	         managercommand=new SManagerMypageDeleteCommand();
 	         managercommand.execute(request, response);
-	         viewPage="managerMain.jsp";
+	         viewPage="managerMain.do";
 	         break;
 	         
 	      case("/Manager.update.do"):
 	         managercommand=new SManagerMypageUpdateCommand();
 	         managercommand.execute(request, response);
-	         viewPage="managerMain.jsp";
+	         viewPage="managerMain.do";
 	         break;
 	      
 	      case("/Manager/manageradd.do"):
@@ -149,8 +149,33 @@ public class Controller extends HttpServlet {
 			managercommand1.execute(request, response);
 			managercommand2 = new SManagerMainSalesTodayCommand();
 			managercommand2.execute(request, response);
-			viewPage = "managerMain.jsp";
+			viewPage = "managerMain.do";
 			break;
+			
+    	case("/Manager/userlist.do"):
+			managercommand = new SManagerUserListCommand();
+			managercommand.execute(request, response);
+			viewPage = "managerUserList.jsp";
+			break;
+			
+    	case("/Manager/productlist.do"):
+    		managercommand = new SManagerProductListCommand();
+	    	managercommand.execute(request, response);
+	    	viewPage = "managerProductList.jsp";
+	    	break;
+    	
+    	case("/Manager/sales.do"):
+    		managercommand = new SManagerSalesListCommand();
+	    	managercommand.execute(request, response);
+	    	viewPage = "managerSales.jsp";
+	    	break;
+	    	
+    	case("/Manager/history.do"):
+    		managercommand = new SManagerHistoryCommand();
+	    	managercommand.execute(request, response);
+	    	viewPage = "managerHistory.jsp";
+	    	break;
+	    	
 //			-------------- 오수 --------------------------
 		case("/Customer/customerProductList.do"):
 			customercommand = new SCustomerProductListCommand();
@@ -195,29 +220,7 @@ public class Controller extends HttpServlet {
 			viewPage = "customerFindpw.jsp";
 			break;
 			
-		case("/Manager/uselist.do"):
-			managercommand = new SManagerUserListCommand();
-			managercommand.execute(request, response);
-			viewPage = "managerUserList.jsp";
-			break;
-			
-    	case("/Manager/productlist.do"):
-    		managercommand = new SManagerProductListCommand();
-	    	managercommand.execute(request, response);
-	    	viewPage = "managerProductList.jsp";
-	    	break;
-    	
-    	case("/Manager/sales.do"):
-    		managercommand = new SManagerSalesListCommand();
-	    	managercommand.execute(request, response);
-	    	viewPage = "managerSales.jsp";
-	    	break;
-	    	
-    	case("/Manager/history.do"):
-    		managercommand = new SManagerHistoryCommand();
-	    	managercommand.execute(request, response);
-	    	viewPage = "managerHistory.jsp";
-	    	break;
+		
 			
 //			-------------- 한별 --------------------------
 		
@@ -266,13 +269,6 @@ public class Controller extends HttpServlet {
 		// 장바구니 선택 상품 삭제하기
 		case("/Customer/selectedProductDelete.do"):
 			customercommand = new SCustomerCartListDeleteCommand();
-			customercommand.execute(request, response);
-			viewPage = "customerCartPage.do";
-			break;
-			
-		// 장바구니 선택 상품 삭제하기
-		case("/Customer/productStockCount.do"):
-			customercommand = new SCustomerDetailCommand();
 			customercommand.execute(request, response);
 			viewPage = "customerCartPage.do";
 			break;

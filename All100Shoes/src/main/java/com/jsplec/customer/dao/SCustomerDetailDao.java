@@ -111,22 +111,19 @@ public class SCustomerDetailDao {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet rs = null;
-		int count = 0;
+		int productstock = 0;
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select from product where productsize = " + productsize;
+			String query = "select productstock from product where productsize = " + productsize + " and productmodel = '" + productmodel + "'";
 			
 			preparedStatement = connection.prepareStatement(query);
 			rs = preparedStatement.executeQuery();
 			
 			if(rs.next()) {
 				
-				int productid = rs.getInt(1);
-				String productmodel = rs.getString(2);
-				int productprice = rs.getInt(3);
-				
+				productstock = rs.getInt(1);
 				
 			}
 			
@@ -141,7 +138,7 @@ public class SCustomerDetailDao {
 				e.printStackTrace();
 			}
 		}
-		return count;
+		return productstock;
 	} // productDetailModel() --
 	
 	
