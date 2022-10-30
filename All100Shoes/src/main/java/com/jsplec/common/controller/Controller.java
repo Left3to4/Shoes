@@ -149,7 +149,7 @@ public class Controller extends HttpServlet {
 			managercommand1.execute(request, response);
 			managercommand2 = new SManagerMainSalesTodayCommand();
 			managercommand2.execute(request, response);
-			viewPage = "managermain.do";
+			viewPage = "managerMain.jsp";
 			break;
 			
     	case("/Manager/userlist.do"):
