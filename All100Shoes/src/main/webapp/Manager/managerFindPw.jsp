@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-<title>Insert title here</title>
+<title>비밀번호 찾기</title>
 </head>
 <body>
 <div align="center">
