@@ -87,7 +87,7 @@
 
    		 <tr style = " position: relative;  left: 790px; bottom: 320px;">
 			<td>
-				<select style = "width: 500px; height: 32px;" name = "productsize">
+				<select style = "width: 500px; height: 32px;" name = "productstock">
 				    <c:forEach begin = "1" end = "10" var = "num">
 						<option value = "${num }">${num}</option>
 				    </c:forEach>
@@ -95,9 +95,9 @@
 			</td>
 		</tr>
 
-		<tr style = " position: relative;  left: 1100px; bottom: 390px;">
+		<tr style = "position: relative;  left: 790px; bottom: 300px;">
 			<td>
-				<button type = "button" class="btn btn-dark me-2" style = "width: 100px; HEIGHT: 80pt" onclick="cartInsert()">CART</button>
+				<button type = "button" class="btn btn-dark me-2" style = "width: 500px;" onclick="cartInsert()">CART</button>
 			</td>
 		</tr>
 		
