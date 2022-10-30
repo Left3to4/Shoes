@@ -15,25 +15,35 @@ public class SCustomerCartCommand implements SCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
-		
-		int productid = Integer.parseInt(request.getParameter("productid"));
+		SCustomerCartDao dao = new SCustomerCartDao();
+
+		int productsize = Integer.parseInt(request.getParameter("productsize"));
 		int productprice = Integer.parseInt(request.getParameter("productprice"));
 		int productstock = Integer.parseInt(request.getParameter("productstock"));
+		String productmodel = request.getParameter("productmodel");
 		
+		int productid = dao.selectProductId(productsize, productmodel);
 		int index = 0;
 		
-		session.setAttribute("CUSTOMERID", "onestar");
+		ArrayList<SCustomerDetailDto> dtos = dao.selectProduct(request);
 		
-		SCustomerCartDao dao = new SCustomerCartDao();
-		dao.cartInsert(productid, productprice, productstock);
-
-		ArrayList<SCustomerDetailDto> dtos = dao.selectProduct();
-		for(int i = 0; i < dtos.size(); i++) {
+		int productidSize = dtos.size();
+		
+		for(int i = 0; i < productidSize; i++) {
+			
 			if(productid == dtos.get(i).getProductid()) {
 				index++;
 			} else {
 				
 			}
+		}
+		if(index > 0) {
+			System.out.println("hi");
+			dao.cartUpdate(productid, productstock, request);
+		} else {
+			System.out.println("HELLO");
+			dao.cartInsert(productid, productprice, productstock, request);
+			
 		}
 		
 	}

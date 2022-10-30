@@ -39,8 +39,8 @@ public class SCustomerCartListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query1 = "select o.orderid, p.productid, p.productmodel, p.productprice, p.productcategory, p.productsize, o.orderquantity ";
-			String query2 = "from product p, orders o where o.customerid = '" + session.getAttribute("CUSTOMERID") + "' and o.orderstatus = '장바구니' and p.productid = o.productid";
+			String query1 = "select o.orderid, p.productid, p.productmodel, p.productprice, p.productsize, o.orderquantity from product p, orders o ";
+			String query2 = "where o.customerid = '" + session.getAttribute("CUSTOMERID") + "' and o.orderstatus = '장바구니' and p.productid = o.productid";
 			
 			preparedStatement = connection.prepareStatement(query1 + query2);
 			
@@ -52,11 +52,10 @@ public class SCustomerCartListDao {
 				int productid = rs.getInt(2);
 				String productmodel = rs.getString(3);
 				int productprice = rs.getInt(4);
-				String productcategory = rs.getString(5);
-				String productsize = rs.getString(6);
-				int orderquantity = rs.getInt(7);
+				String productsize = rs.getString(5);
+				int orderquantity = rs.getInt(6);
 				
-				SCustomerCartListDto dto = new SCustomerCartListDto(orderid, productid, productmodel, productprice, productcategory, productsize, orderquantity);
+				SCustomerCartListDto dto = new SCustomerCartListDto(orderid, productid, productmodel, productprice, productsize, orderquantity);
 				dtos.add(dto);
 			}
 			
@@ -74,9 +73,9 @@ public class SCustomerCartListDao {
 		return dtos;
 	} // productDetailSize() --
 	
-	public SCustomerCartListDto cartTotalPrice(HttpServletRequest request) {
+	public ArrayList<SCustomerCartListDto> cartTotalPrice(HttpServletRequest request) {
 		
-		SCustomerCartListDto dto = null;
+		ArrayList<SCustomerCartListDto> dtos = new ArrayList<SCustomerCartListDto>();
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -86,17 +85,18 @@ public class SCustomerCartListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query1 = "select count(*), sum(ordersaleprice) from orders where orderstatus = '장바구니' and customerid = '" + session.getAttribute("CUSTOMERID") + "'";
+			String query1 = "select orderquantity, ordersaleprice from orders where orderstatus = '장바구니' and customerid = '" + session.getAttribute("CUSTOMERID") + "'";
 			preparedStatement = connection.prepareStatement(query1);
 			
 			rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
 				
-				int listCount = rs.getInt(1);
-				int listTotalSum = rs.getInt(2);
+				int orderquantity = rs.getInt(1);
+				int ordersaleprice = rs.getInt(2);
 
-				dto = new SCustomerCartListDto(listCount, listTotalSum);
+				SCustomerCartListDto dto = new SCustomerCartListDto(orderquantity, ordersaleprice);
+				dtos.add(dto);
 			}
 			
 		} catch(Exception e) {
@@ -110,7 +110,44 @@ public class SCustomerCartListDao {
 				e.printStackTrace();
 			}
 		}
-		return dto;
+		return dtos;
+	} // productDetailSize() --
+	
+	public int cartListCount(HttpServletRequest request) {
+		
+		int listCount = 0;
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		HttpSession session = request.getSession();
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query1 = "select count(*) from orders where orderstatus = '장바구니' and customerid = '" + session.getAttribute("CUSTOMERID") + "'";
+			preparedStatement = connection.prepareStatement(query1);
+			
+			rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				listCount = rs.getInt(1);
+				
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return listCount;
 	} // productDetailSize() --
 	
 }

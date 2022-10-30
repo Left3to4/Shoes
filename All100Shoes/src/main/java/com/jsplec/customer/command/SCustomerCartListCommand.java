@@ -14,13 +14,19 @@ public class SCustomerCartListCommand implements SCustomerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		SCustomerCartListDao dao = new SCustomerCartListDao();
+		ArrayList<SCustomerCartListDto> dtos1 = dao.cartList(request);
+		ArrayList<SCustomerCartListDto> dtos2 = dao.cartTotalPrice(request);
+		int listCount = dao.cartListCount(request);
 		
-		ArrayList<SCustomerCartListDto> dtos = dao.cartList(request);
-		SCustomerCartListDto dto = dao.cartTotalPrice(request);
-		System.out.println(dto.getListCount());
-		System.out.println(dto.getListTotalSum());
-		request.setAttribute("list", dtos);
-		request.setAttribute("result", dto);
+		int totalPrice = 0;
+		
+		for(int i = 0; i < dtos2.size(); i++) {
+			totalPrice += dtos2.get(i).getOrderquantity() * dtos2.get(i).getOrdersaleprice();
+		}
+		
+		request.setAttribute("list", dtos1);
+		request.setAttribute("totalPrice", totalPrice);
+		request.setAttribute("listCount", listCount);
 	}
 
 	@Override

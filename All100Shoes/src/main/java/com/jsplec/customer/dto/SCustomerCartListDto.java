@@ -9,9 +9,8 @@ public class SCustomerCartListDto {
 	String productcategory;
 	String productsize;
 	int orderquantity;
+	int ordersaleprice;
 	
-	int listCount;	// 장바구니에 담은 상품 총 개수
-	int listTotalSum;	// 장바구니에 담은 상품 총 가격
 	
 	
 	public SCustomerCartListDto() {
@@ -20,23 +19,24 @@ public class SCustomerCartListDto {
 
 	
 	
-	public SCustomerCartListDto(int orderid, int productid, String productmodel, int productprice, String productcategory,
-			String productsize, int orderquantity) {
+	public SCustomerCartListDto(int orderid, int productid, String productmodel, int productprice, String productsize, int orderquantity) {
 		super();
 		this.orderid = orderid;
 		this.productid = productid;
 		this.productmodel = productmodel;
 		this.productprice = productprice;
-		this.productcategory = productcategory;
 		this.productsize = productsize;
 		this.orderquantity = orderquantity;
 	}
 
 	
-	public SCustomerCartListDto(int listCount, int listTotalSum) {
+
+
+
+	public SCustomerCartListDto(int orderquantity, int ordersaleprice) {
 		super();
-		this.listCount = listCount;
-		this.listTotalSum = listTotalSum;
+		this.orderquantity = orderquantity;
+		this.ordersaleprice = ordersaleprice;
 	}
 
 
@@ -97,29 +97,15 @@ public class SCustomerCartListDto {
 		this.orderquantity = orderquantity;
 	}
 
+	public int getOrdersaleprice() {
+		return ordersaleprice;
+	}
 
-
-	public int getListCount() {
-		return listCount;
+	public void setOrdersaleprice(int ordersaleprice) {
+		this.ordersaleprice = ordersaleprice;
 	}
 
 
-
-	public void setListCount(int listCount) {
-		this.listCount = listCount;
-	}
-
-
-
-	public int getListTotalSum() {
-		return listTotalSum;
-	}
-
-
-
-	public void setListTotalSum(int listTotalSum) {
-		this.listTotalSum = listTotalSum;
-	}
 	
 	
 	

@@ -102,8 +102,8 @@ crossorigin="anonymous">
 					
 			    </c:forEach>
 				<div id="STATICMENU">
-					상품개수 : ${result.listCount}개 <br>
-					합계금액 : ${result.listTotalSum}원 <br>
+					상품개수 : ${listCount}개 <br>
+					합계금액 : ${totalPrice}원 <br>
 					<button type = "button" class="btn btn-dark" onclick="selectedBuy()">선택한 상품 구매</button>
 				</div>
 			</table>

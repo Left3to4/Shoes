@@ -20,15 +20,9 @@
 		form.submit();
 	}
 	
-	function cartList(){
+	function stockUp(){
 		var form=document.detail;
-		form.action = "customerCartPage.do";
-		form.submit();
-	}
-	
-	function deleteaction(){
-		var form=document.mypage;
-		form.action="delete.do";
+		form.action = "delete.do";
 		form.submit();
 	}
 
@@ -58,7 +52,7 @@
 	<table>
 		    
 		<tr style = " position: relative;  left: 900px; bottom: 300px">
-			<td><h1><input type = "hidden" name = "productid" value = "${detail.productid }">${detail.productmodel }</h1></td>
+			<td><h1><input type = "hidden" name = "productmodel" value = "${detail.productmodel }">${detail.productmodel }</h1></td>
 		</tr>
 		
 		<tr style = " position: relative;  left: 900px; bottom: 200px">
@@ -68,11 +62,11 @@
 	</table>
 	    
 	<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-		<div class="card" style="width: 18rem; height: 18rem">
+		<div class="card" style="width: 18rem; height: 18rem; bottom: 150px">
 			<img src="./shoesFolder3/1.png" class="card-img-top" alt="...">	
 		</div>
 	    
-		<div class="card" style="width: 18rem; height: 18rem">
+		<div class="card" style="width: 18rem; height: 18rem; bottom: 150px">
 			<img src="./shoesFolder4/1.png" class="card-img-top" alt="...">
 		</div>
 	</div>
@@ -85,9 +79,9 @@
    			</td>
     	</tr>
     	
-   		 <tr style = " position: relative;  left: 700px; bottom: 320px;">
+   		 <tr style = " position: relative;  left: 810px; bottom: 320px;">
 			<td>
-				 <select style = "width: 500px; height: 32px;" name = "productsize" id = "textOption" onchange = "selectFx()">
+				 <select style = "width: 280px; height: 32px;" name = "productsize">
 				    <c:forEach items = "${list}" var = "dto">
 						<option value = "${dto.productsize }">${dto.productsize }</option>
 				    </c:forEach>
@@ -95,20 +89,17 @@
 			</td>
 		</tr>
 
-   		 <tr style = " position: relative;  left: 700px; bottom: 320px;">
+   		 <tr style = " position: relative;  left: 810px; bottom: 320px;">
 			<td>
-				 <select style="width:500px;height:32px;" name = "productstock">
-						<option value = "1">1</option>
-						<option value = "2">2</option>
-						<option value = "3">3</option>
-						<option value = "4">4</option>
-				</select>
+				 <input type = "text" name = "productstock" value = "1">
+				 <button type = "button" onclick = "stockUp()">up</button>
+				 <button type = "button">down</button>
 			</td>
 		</tr>
 
-		<tr style = " position: relative;  left: 700px; bottom: 300px;">
+		<tr style = " position: relative;  left: 1100px; bottom: 390px;">
 			<td>
-				<button type = "button" class="btn btn-dark me-2" style = "width: 500px" onclick="cartInsert()">CART</button>
+				<button type = "button" class="btn btn-dark me-2" style = "width: 100px; HEIGHT: 80pt" onclick="cartInsert()">CART</button>
 			</td>
 		</tr>
     </table>
