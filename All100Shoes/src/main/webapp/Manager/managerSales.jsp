@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MVC 게시판</title>
+<title>매출 관리</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
@@ -46,9 +46,8 @@
 	<table class="table table-sm" style = "width:80%, text-align: center;">
 		<thead>
 			<tr style="align-items: center">
-				<th scope="col">번호</th>
-				<th scope="col">매출</th>
 				<th scope="col">날짜</th>
+				<th scope="col">매출</th>
 			</tr>
 		</thead>
 		

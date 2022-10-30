@@ -39,7 +39,7 @@ public class MSalesListDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select sum(ordersaleprice), orderdate from orders ";
+			String query = "select sum(ordersaleprice), orderdate from orders where orderstatus = '구매' ";
 			String query1 = "group by orderdate";
 			preparedStatement = connection.prepareStatement(query+query1);
 			resultSet = preparedStatement.executeQuery();
