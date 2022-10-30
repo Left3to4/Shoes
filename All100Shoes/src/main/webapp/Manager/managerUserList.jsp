@@ -66,6 +66,7 @@
 		<c:forEach items = "${USERLIST}" var = "dto">
 				<tr>
 					<td>${dto.customerseq}</td>
+					<td>${dto.customerid}</td>
 					<td>${dto.customername}</td>
 					<td>${dto.customerphone}</td>
 					<td>${dto.customeraddress}</td>
