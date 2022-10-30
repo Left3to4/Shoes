@@ -7,7 +7,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 
-<a href = "main.jsp"><img src="sport-shoe.png" style="width: 80px; margin-left: 30px;" /></a>
+<a href = "customerProductList.do"><img src="sport-shoe.png" style="width: 80px; margin-left: 30px;" /></a>
 
 	<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-10" style="margin-left: 300px;">
 		<li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>

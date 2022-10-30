@@ -6,6 +6,7 @@
 
 <html lang="en">
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -138,17 +139,59 @@
 		</nav>
 	</header>
 	
-	<form action="customerProductList.do">
+<!-- <form action="customerProductList.do">
 		검색 선택 : 
-			<select name="query">
+			<select name="pbrand">
 				<option value="productmodel" selected="selected">model</option>
 				<option value="productbrand">brand</option>
 			</select>&nbsp;&nbsp;&nbsp;
 			<input type="text" name="content" size="30">
 			<input type="submit" value="검색">
-	</form>
+	</form> -->
 
 	<main>
+	
+	<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-5 fw-semibold">Collapsible</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+      <a href="customerProductList.do">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          All
+        </button>
+      </a>
+      </li>
+      <li class="mb-1">
+      <a>
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          Nike
+        </button>
+      </a>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li value="pcategory"><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">sneakers</a></li>
+            <li><a href="customerProductList.do?productbrand=nike&productcategory=running" class="link-dark d-inline-flex text-decoration-none rounded">running</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">basketball</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+          Adidas
+        </button>
+        <div class="collapse" id="orders-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">sneakers</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">running</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">basketball</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
 	
 		<div class="row">
 			

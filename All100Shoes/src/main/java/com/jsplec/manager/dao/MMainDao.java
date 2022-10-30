@@ -39,6 +39,7 @@ public class MMainDao {
 			resultSet = preparedStatement.executeQuery();
 			
 			result = resultSet.getInt(1);
+			System.out.println(result);
 			
 		}catch(Exception e) {
 			e.printStackTrace();

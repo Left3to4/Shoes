@@ -105,5 +105,44 @@ public class SCustomerDetailDao {
 	} // productDetailSize() --
 	
 	
+
+	public int productStockCount(String productmodel, int productsize) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "select from product where productsize = " + productsize;
+			
+			preparedStatement = connection.prepareStatement(query);
+			rs = preparedStatement.executeQuery();
+			
+			if(rs.next()) {
+				
+				int productid = rs.getInt(1);
+				String productmodel = rs.getString(2);
+				int productprice = rs.getInt(3);
+				
+				
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	} // productDetailModel() --
+	
 	
 } // End Line 

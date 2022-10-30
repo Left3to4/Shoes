@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@ function fn_joinMenber(){
 		joinForm.id.focus();
 	}else if(joinForm.idDuplication.value!="idCheck"){
 		alert("아이디 중복체크를 해주세요");
-	}else if(pwd.lenggth==0 || pwd==""){
+	}else if(pwd.length==0 || pwd==""){
 		alert("비밀번호를 입력해주세요");
 		joinForm.pwd.focus();
 	}else if(rePwd.length==0 || rePwd ==""){
@@ -52,71 +53,47 @@ function fn_joinMenber(){
 	
 	form.submit();
 }
-function fn_dbCheckId(){
-	
-	var joinForm =document.joinForm;
-	var id = joinForm.id.value;
-	if(id.length==0 || id ==""){
-		alert("아이디를 입력햏주세요");
-		joinForm.id.focus();
-	}else{
-		window.open("${contextPath}/membet/dbCheckId.do?user_id="+id,"","width=500, height=300");
-	}
-}else if(action.equals("/dbCheckId.do")){
-	String id = request.getParameter("user_id");
-	system.out.println("id를 가져옴 : " id);
-	int result = memberService.idCheck(id);
-	ssesion.setAttribute("result",result);
-	nextPage="/jjsp/dbCheckId.jsp";
-	
-	public int idCheck(String id){
-		int result = memberDAO.selectAllId(id);
-		return result;
-	}
-	function sendCheckValue(){
-		var openJoinfrm = opener.document.joinForm;
-		alert("다른 아이디를 입력해주세요");
-		operJoinfrm.id.focus();
-		window.close();
-		
-	}else{
-		openJoinfrm.idBuplication.value="idCheck";
-		openJoinfrm.dbCheckId.disabled=true;
-		openJoinfrm.dbCheckId.style.opacity=0.6;
-		openJoinfrm.dbCheckId.style.cursor="default";
-		window.close();
-		
-	}
-	function inputIdChk(){
+
+	function CheckId(){
 		var joinForm = document.joinForm;
-		var dbCheckId = document.joinForm.dbCheckId;
-		document.joinForm.idBuplication.value="idUncheck";
-		dbCheckId.disabled=false;
-		dbCheckId.style.opacity=1;
-		dbCheckId.style.cursor="pointer";
-		
-	}
-	function fn_dbCheckId(){
-		var joinForm = document.joinForm;
-		joinForm.action="http://localhost:8080/All100Shoes/Customer/main.jsp";
+		joinForm.action="idcheck.do";
 		joinForm.submit();
 		}
-
+	
+	function snedCheckVAlue(){
+		var openJoinfrm = document.joinFrom;
 		
+		if(document.chResult.value =="N"){
+			alert("다른 아이디를 입력해주세요.");
+			openJoinfrm.id.focus();
+		}else{
+			openJoinfrm.idDuplication.value="idCheck";
+			openJoinfrm.idcheck.disabled=true;
+			openJoinfrm.idcheck.style.opacity=0.6;
+			openJoinfrm.idcheck.style.cursor="default";
+			joinForm.action="Sighup.do";
+			joinForm.submit();
+		}
+	}
+
 	}
 }
 }
 </script>
 	
 
-<form action="list.do" method="post" name ="joinForm" >
+<form action="Sighup.do" method="post" name ="joinForm" >
 		<table border="0" align="center" >
 		
 			<tr>
 				<td>ID</td>
-				<td><input type="text" name="id" onkeydown="inputIdChk()" size ="30"></td>
-				<td><button type="button" name="dbCheckID" class="btn btn-dark" class="checkId" onclick="fn_dbCheckId()'" >중복 확인</button></td>
-				<input type="hidden" name="idDuplication" value="idUncheck"/>
+				<td><input type="text" name="id" size ="30" value="${CHECKID }" >
+				<button type="submit" name="idcheck" class="btn btn-dark" class="checkId" onclick="CheckId()" >중복 확인</button></td>
+				<c:if test="${CHECK==true }">사용할 수 없는 ID입니다.
+				</c:if>
+				<c:if test="${CHECK==false }">사용 가능한 ID입니다.
+				</c:if>
+				<td><input type="hidden" name="idDuplication" value="idUncheck"/></td>
 			</tr>
 			<tr>
 				<td>pw</td>
@@ -142,7 +119,7 @@ function fn_dbCheckId(){
 
 			</tr>
 			<tr>
-			<td><input class="btn btn-dark" type="submit" onclick="join()" value="회원가입"></td>
+			<td><input class="btn btn-dark" type="submit" onclick="snedCheckVAluein()" value="회원가입"></td>
 			<td><button type="submit" class="btn btn-dark" onclick="login.jsp">돌아가기</button></td>
 				</tr>
 		

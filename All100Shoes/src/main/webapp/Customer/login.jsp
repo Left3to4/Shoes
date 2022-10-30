@@ -28,6 +28,17 @@ function customerSighup(){
 	form.action="http://localhost:8080/All100Shoes/Customer/customerSighup.jsp";
 	form.submit();
 }
+
+function customerFindid(){
+	var form=document.login;
+	form.action="http://localhost:8080/All100Shoes/Customer/customerFindid.jsp";
+	form.submit();
+}
+function customerFindpw(){
+	var form=document.login;
+	form.action="http://localhost:8080/All100Shoes/Customer/customerFindpw.jsp";
+	form.submit();
+}
 </script>
 
 
@@ -113,8 +124,8 @@ function customerSighup(){
 			<c:if test="${CHECK1==false }">
 			<p class="lead" style="font-size:0.8em;margin:10px">ID 또는 비밀번호가 일치하지 않습니다.</p>
 			</c:if>
-			<button type="button" class="btn btn-link" style="color:black">ID 찾기</button>
-			<button type="button" class="btn btn-link" style="color:black">비밀번호 찾기</button><br>
+			<button type="button" class="btn btn-link" style="color:black" onclick="customerFindid()">ID 찾기</button>
+			<button type="button" class="btn btn-link" style="color:black" onclick="customerFindpw()">비밀번호 찾기</button><br>
 			처음 오셨나요?<button type="button" class="btn btn-link" style="color:black" onclick="customerSighup()">회원가입</button><br>
 			관리자이신가요?<button type="button" class="btn btn-link" style="color:black" onclick="managerlogin()">관리자 로그인</button><br>
 			<button type="button" class="btn btn-secondary" style="color:white" onclick="backtomain()">메인으로</button><br>

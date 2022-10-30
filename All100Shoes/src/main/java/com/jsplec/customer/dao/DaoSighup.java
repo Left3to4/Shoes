@@ -26,34 +26,26 @@ public class DaoSighup {
 		
 		
 		
-		public int checkId(String customerid) {
+		public boolean checkId(String customerid) {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 			ResultSet resultSet = null;
-
-			int checked = 0;
+			int checked =0;
+		
 //			String loginId = null;
 
 			String query = "select count(*) from customer "; // 마지막 띄워주기
-			String query2 = "where id = '" + customerid + "' and deletedate is null";
+			String query2 = "where shoespj.customerid = ? and customerdeletedate is null";
 
 			try {connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query+query2);
-			preparedStatement.setInt(1, Integer.parseInt(customerid));
+			preparedStatement.setString(1, customerid);
 			resultSet = preparedStatement.executeQuery();
 			
 				if (resultSet.next()) { // true값일때만 가져온다
-					checked=resultSet.getInt(1);
-					checked = 0;
-					System.out.println("result 값 : " + checked);
-					 
-				}else{
-					checked=resultSet.getInt(1);
-					checked = 1;
+					checked = resultSet.getInt(1);
+					
 				}
-
-				System.out.println("아이디 중복체크결과 : "+checked);
-
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
@@ -65,7 +57,11 @@ public class DaoSighup {
 					e.printStackTrace();
 				}
 			}
-			return checked;
+			if(checked == 1) {
+				return true;
+			}else{
+				return false;
+			}
 		}
 
 

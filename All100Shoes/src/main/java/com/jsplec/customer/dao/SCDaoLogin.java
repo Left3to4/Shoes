@@ -100,19 +100,19 @@ public class SCDaoLogin {
 		Connection connection = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String managerid=null;
+		String customerid=null;
 
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "select customerid from customer where customername=? and customerphoe=? and customerdeletedate is null";
+			String query = "select customerid from shoespj.customer where customername=? and customerphone=? and customerdeletedate is null";
 			ps = connection.prepareStatement(query);
 			ps.setString(1, customername);
 			ps.setString(2, customerphoe);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				managerid=rs.getString(1);
+				customerid=rs.getString(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,10 +126,10 @@ public class SCDaoLogin {
 			}
 		}
 		
-		return managerid;
+		return customerid;
 	}
 	
-	public String managerFindPw(String customername, String customerphone, String customerid) {
+	public String customerFindPw(String customerid, String customerphone) {
 		Connection connection = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -137,16 +137,15 @@ public class SCDaoLogin {
 
 		try {
 			connection = dataSource.getConnection();
-
-			String query = "select customerpw from customer where customername=? and customerphone=? and customerid=? and customerdeletedate is null";
+			String query = "select customerpw from shoespj.customer where customerid=? and customerphone=? and customerdeletedate is null";
 			ps = connection.prepareStatement(query);
-			ps.setString(1, customername);
+			ps.setString(1, customerid);
 			ps.setString(2, customerphone);
-			ps.setString(3, customerid);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
 				customerpw=rs.getString(1);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
