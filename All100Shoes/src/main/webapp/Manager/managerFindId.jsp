@@ -6,7 +6,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ID 찾기</title>
 </head>
 <body>
 <div align="center">
